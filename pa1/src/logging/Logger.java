@@ -1,12 +1,13 @@
 package src.logging;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
 
 public class Logger {
   private String prefix;
-  private Optional<FileWriter> fw;
+  private static final String LOG_DIR = "logs";
 
   public Logger(String prefix) {
     this.prefix = prefix;
@@ -14,15 +15,23 @@ public class Logger {
 
   public Logger(String prefix, String file) throws IOException {
     this.prefix = prefix;
-    this.fw = Optional.of(new FileWriter(file, false));
   }
 
-  public static void println(String s) {
+  public void println(String s) {
     System.out.println(s);
   }
 
-  public static LogResult fprintln(String file, String s) {
-    try (java.io.FileWriter fw = new java.io.FileWriter(file, false)) {
+  public LogResult fprintln(String file, String s) {
+    File logDir = new File(LOG_DIR);
+    if (!logDir.exists()) {
+      try {
+        logDir.mkdir();
+      } catch (SecurityException e) {
+        return LogResult.ErrorCreatingDirectory;
+      }
+    }
+
+    try (java.io.FileWriter fw = new java.io.FileWriter(LOG_DIR + "/" + file, false)) {
       fw.write(s + "\n");
       fw.close();
     } catch (IOException e) {
@@ -31,12 +40,19 @@ public class Logger {
     return LogResult.Ok;
   }
 
-  public LogResult fprintln(String s) {
-    if (!this.fw.isPresent()) {
-      return LogResult.FileNotSet;
+  public LogResult aprintln(String file, String s) {
+    File logDir = new File(LOG_DIR);
+    if (!logDir.exists()) {
+      try {
+        logDir.mkdir();
+      } catch (SecurityException e) {
+        return LogResult.ErrorCreatingDirectory;
+      }
     }
-    try {
-      fw.get().write(s + "\n");
+
+    try (java.io.FileWriter fw = new java.io.FileWriter(LOG_DIR + "/" + file, true)) {
+      fw.write(s + "\n");
+      fw.close();
     } catch (IOException e) {
       return LogResult.ErrorWritingToFile;
     }
@@ -97,6 +113,18 @@ public class Logger {
 
   public void test(Object... os) {
     System.out.print("TEST\t:: " + this.prefix + " :: ");
+    for (Object o : os) {
+      System.out.print(o.toString() + " ");
+    }
+    System.out.println();
+  }
+
+  public void bench(String s) {
+    System.out.println("BENCH\t:: " + this.prefix + " :: " + s);
+  }
+
+  public void bench(Object... os) {
+    System.out.print("BENCH\t:: " + this.prefix + " :: ");
     for (Object o : os) {
       System.out.print(o.toString() + " ");
     }

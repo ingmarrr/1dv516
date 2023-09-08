@@ -1,9 +1,13 @@
 package src.benchmark;
 
+import java.util.Map;
 import java.util.Random;
+import java.util.function.BiConsumer;
 
+import src.logging.LogResult;
 import src.logging.Logger;
 import src.p1.QUnionFind;
+import src.p1.UnionFind;
 import src.p1.WQUnionFind;
 
 public class Bench {
@@ -16,34 +20,34 @@ public class Bench {
     final Logger log = new Logger("BENCHMARK");
     final Random rand = new Random();
 
-    bm.run(qf, (state, ix) -> {
-      state.union(rand.nextInt(elems), rand.nextInt(elems));
-    }, elems - 1, nrSnaps);
-    final float qfDurationSetup = bm.getDurationS();
-    // final float qfMeanSetup = bm.getMean();
-    log.info("QF SETUP :: duration ::" + qfDurationSetup);
+    final int[] sizes = new int[] {
+        10_000, 20_000, 30_000, 40_000, 50_000, 60_000, 70_000, 80_000, 90_000,
+        100_000, 110_000, 120_000, 130_000, 140_000, 150_000, 160_000, 170_000, 180_000, 190_000, 200_000,
+    };
+    final int reps = 10;
 
-    bm.run(qf, (state, ix) -> {
-      state.root(ix);
-    }, elems, nrSnaps);
-    final float qfDuration = bm.getDurationS();
-    // final float qfMean = bm.getMean();
-    log.info("QF ROOT :: duration ::" + qfDuration);
+    final BiConsumer<UnionFind, Integer> setup = (uf, sz) -> {
+      for (int i = 0; i < sz; i++) {
+        uf.union(rand.nextInt(sz), rand.nextInt(sz));
+      }
+    };
 
-    bm.reset();
+    final BiConsumer<UnionFind, Integer> fn = (uf, sz) -> {
+      uf.connected(rand.nextInt(sz), rand.nextInt(sz));
+    };
 
-    bm.run(wqf, (state, ix) -> {
-      state.union(rand.nextInt(elems), rand.nextInt(elems));
-    }, elems - 1, nrSnaps);
-    final float wqfDurationSetup = bm.getDurationS();
-    // final float wqfMeanSetup = bm.getMean();
-    log.info("WQF SETUP :: duration ::" + wqfDurationSetup);
+    final Map<Integer, Float> qfres = bm.run("QUnionFind", qf, setup, fn, sizes, reps);
+    final Map<Integer, Float> qwfres = bm.run("WQUnionFind", wqf, setup, fn, sizes, reps);
 
-    bm.run(wqf, (state, ix) -> {
-      state.root(ix);
-    }, elems, nrSnaps);
-    final float wqfDuration = bm.getDurationS();
-    log.info("WQF ROOT :: duration ::" + wqfDuration);
-    // log.info("WQF ROOT :: mean ::" + wqfMean);
+    final LogResult qfresLog = log.fprintln("qfres.csv", "size, duration");
+    final LogResult qwfresLog = log.fprintln("qwfres.csv", "size, duration");
+    if (qfresLog != LogResult.Ok || qwfresLog != LogResult.Ok) {
+      System.out.println("Error writing to file");
+    }
+
+    for (int sz : sizes) {
+      log.aprintln("qfres.csv", sz + "; " + qfres.get(sz));
+      log.aprintln("qwfres.csv", sz + "; " + qwfres.get(sz));
+    }
   }
 }

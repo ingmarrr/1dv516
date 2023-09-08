@@ -3,7 +3,7 @@ package src.p1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QUnionFind {
+public class QUnionFind implements UnionFind {
   private List<Integer> ids;
   // private Log log;
 

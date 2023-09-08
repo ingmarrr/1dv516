@@ -4,5 +4,6 @@ public enum LogResult {
   FileNotFound,
   FileNotSet,
   ErrorWritingToFile,
+  ErrorCreatingDirectory,
   Ok,
 }

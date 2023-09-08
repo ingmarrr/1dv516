@@ -3,7 +3,7 @@ package src.p1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WQUnionFind {
+public class WQUnionFind implements UnionFind {
   private final List<Integer> ids;
   private final List<Integer> sizes;
 
