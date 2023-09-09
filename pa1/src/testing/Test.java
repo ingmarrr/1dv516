@@ -1,6 +1,7 @@
 package src.testing;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import src.logging.Logger;
 
@@ -43,5 +44,10 @@ public class Test {
     log.test("Running tests for " + name + "...");
     log.test(result.toString());
     return result.passed();
+  }
+
+  public static boolean allTrue(boolean[] results) {
+    return IntStream.range(0, results.length)
+        .allMatch(i -> results[i]);
   }
 }

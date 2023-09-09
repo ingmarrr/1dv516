@@ -1,9 +1,9 @@
-package src.p1;
+package src.core;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WQUnionFind implements UnionFind {
+public class WQUnionFind implements IUnionFind {
   private final List<Integer> ids;
   private final List<Integer> sizes;
 
