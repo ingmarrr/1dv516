@@ -1,4 +1,4 @@
-package src.core;
+package src.utils;
 
 public class Triple<T> implements Comparable<Triple<T>> {
   public T first;

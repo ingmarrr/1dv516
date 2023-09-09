@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import src.core.Triple;
 import src.core.Ts;
-import src.core.TsResult;
 import src.testing.Test;
 import src.testing.True;
+import src.utils.Triple;
+import src.utils.TsResult;
 
 public class TsTest {
   public static void main(String[] args) {
@@ -28,6 +28,9 @@ public class TsTest {
         tsCINegNum(),
         tsCINoSolution(),
         tsMultiple(),
+        tsTwoP(),
+        tsTwoPNoSolution(),
+        tsTwoPMultiple()
     };
 
     final boolean allTestsPassed = Test.allTrue(results);
@@ -114,12 +117,60 @@ public class TsTest {
   private static boolean tsMultiple() {
     List<Integer> input = Arrays.asList(-2, -2, -1, -3, 4, 5);
     TsResult result = Ts.cacheI(input);
-    System.out.println(result);
     // Expected: [(-2, -2, 4), (-2, -1, 3)]
     return Test.assertTrue(
         "testMultiple",
         True.of("(-2, -2, 4)", result.has(new Triple<>(-2, -2, 4))),
         True.of("(-1, -3, 4)", result.has(new Triple<>(-1, -3, 4))),
         True.of("(-2, -3, 5)", result.has(new Triple<>(-2, -3, 5))));
+  }
+
+  private static boolean tsTwoP() {
+    List<Integer> input = Arrays.asList(-1, 0, 1, -1, -4, 2);
+    TsResult result = Ts.twoP(input);
+    // Expected: [(-1, 0, 1), (-1, -1, 2)]
+    return Test.assertTrue(
+        "testTwoP",
+        True.of("(-1, 0, 1)", result.has(-1, 0, 1)),
+        True.of("(-1, -1, 2)", result.has(-1, -1, 2)));
+  }
+
+  private static boolean tsTwoPNoSolution() {
+    List<Integer> input = Arrays.asList(1, 2, 3, 4);
+    TsResult result = Ts.twoP(input);
+    // Expected: []
+    return Test.assertTrue(
+        "testTwoPNoSolution",
+        True.of("NoSolutionTest", result.isEmpty()));
+  }
+
+  private static boolean tsTwoPMultiple() {
+    List<Integer> input = Arrays.asList(-2, -2, -1, -3, 4, 5);
+    TsResult result = Ts.twoP(input);
+    /*
+     * Expected
+     * [(-2, -3, 5),
+     * (-2, -2, 4),
+     * (-2, -3, 5),
+     * (-2, -2, 4),
+     * (-1, -3, 4),
+     * (-3, -2, 5),
+     * (-3, -1, 4),
+     * (4, -3, -1),
+     * (4, -2, -2),
+     * (5, -3, -2)]
+     */
+    return Test.assertTrue(
+        "testTwoPMultiple",
+        True.of("(-2, -3, 5)", result.has(-2, -3, 5)),
+        True.of("(-2, -2, 4)", result.has(-2, -2, 4)),
+        True.of("(-2, -3, 5)", result.has(-2, -3, 5)),
+        True.of("(-2, -2, 4)", result.has(-2, -2, 4)),
+        True.of("(-1, -3, 4)", result.has(-1, -3, 4)),
+        True.of("(-3, -2, 5)", result.has(-3, -2, 5)),
+        True.of("(-3, -1, 4)", result.has(-3, -1, 4)),
+        True.of("(4, -3, -1)", result.has(4, -3, -1)),
+        True.of("(4, -2, -2)", result.has(4, -2, -2)),
+        True.of("(5, -3, -2)", result.has(5, -3, -2)));
   }
 }

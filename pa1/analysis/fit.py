@@ -1,3 +1,4 @@
+from typing import Callable
 import scipy.optimize as opt
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,7 +13,7 @@ def quadratic(x: int, a: int, b: int, c: int) -> int:
 def linear(x: int, a: int, b: int) -> int:
     return a*x + b
 
-def fit(x: np.ndarray, y: np.ndarray, func: callable) -> tuple[np.ndarray, np.ndarray]:
+def fit(x: np.ndarray, y: np.ndarray, func: Callable) -> tuple[np.ndarray, np.ndarray]:
     popt, pcov = opt.curve_fit(func, x, y)
     return popt, pcov
 

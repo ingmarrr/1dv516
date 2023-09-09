@@ -1,4 +1,4 @@
-package src.core;
+package src.utils;
 
 public class Pair<T> implements Comparable<Pair<T>> {
   public T first;

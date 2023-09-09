@@ -1,30 +1,30 @@
 package src.benchmark;
 
 public class Snapshot {
-  private long time;
-  private int iterartion;
+  private float duration;
+  private float mean;
+  private int repeats;
 
-  /**
-   * @param time
-   * @param data
-   */
-  public Snapshot(long time, int iteration) {
-    this.time = time;
-    this.iterartion = iteration;
+  public Snapshot(float duration, float mean, int repeats) {
+    this.duration = duration;
+    this.mean = mean;
+    this.repeats = repeats;
   }
 
-  /**
-   * @return the time
-   */
-  public long getTime() {
-    return time;
+  public float getDuration() {
+    return duration;
   }
 
-  /**
-   * @return the data
-   */
-  public int getIterartion() {
-    return iterartion;
+  public float getMean() {
+    return mean;
   }
 
+  public int getRepeats() {
+    return repeats;
+  }
+
+  @Override
+  public String toString() {
+    return duration + ";" + mean + ";" + repeats;
+  }
 }

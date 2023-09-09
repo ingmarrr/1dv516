@@ -1,3 +1,4 @@
+from typing import Callable
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -36,7 +37,7 @@ def plot_scale_y(
     plt.close()
 
 
-def plot_fit(x: np.ndarray, y: np.ndarray, params: list[float], fn: callable) -> None:
+def plot_fit(x: np.ndarray, y: np.ndarray, params: np.ndarray, fn: Callable) -> None:
     plt.scatter(x, y, label='Data', color='red')
     plt.plot(x, fn(x, *params), label='Fit', color='blue')
     plt.xlabel('Size')

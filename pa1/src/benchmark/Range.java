@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import src.core.Pair;
-
 public class Range implements Iterable<Integer> {
 
   private final int start;

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import src.utils.Triple;
+import src.utils.TsResult;
 
 import static src.benchmark.Range.range;
 
@@ -85,6 +89,34 @@ public class Ts {
   }
 
   public static TsResult twoP(List<Integer> l) {
+    final List<Integer> sorted = l.stream().sorted().collect(Collectors.toList());
+    final List<Triple<Integer>> result = new ArrayList<>();
+    int fp = 0;
+    int bp = l.size() - 1;
 
+    for (int a : l) {
+      while (fp < bp) {
+        final int negA = -a;
+        final int b = sorted.get(fp);
+        final int c = sorted.get(bp);
+        final int sum = b + c;
+
+        if (sum < negA) {
+          fp++;
+        } else if (sum > negA) {
+          bp--;
+        } else {
+          final Triple<Integer> tr = new Triple<>(a, b, c);
+          result.add(tr);
+          fp++;
+          bp--;
+        }
+
+      }
+      fp = 0;
+      bp = l.size() - 1;
+    }
+
+    return new TsResult(result);
   }
 }
