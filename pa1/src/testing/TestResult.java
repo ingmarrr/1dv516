@@ -3,11 +3,10 @@ package src.testing;
 import java.util.List;
 
 public class TestResult {
-  public List<Case> cases;
+  public final List<Case> cases;
 
   public TestResult(Case[] cases) {
-    final List<Case> casesList = List.of(cases);
-    this.cases = casesList;
+    this.cases = List.of(cases);
   }
 
   public boolean passed() {

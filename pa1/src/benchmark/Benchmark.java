@@ -9,10 +9,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import src.logging.Logger;
@@ -25,12 +23,14 @@ public class Benchmark {
   public Benchmark() {
   }
 
-  public <T> Map<Integer, Snapshot> bench(
-          String name, String filename,
+  public <T> void bench(
+          String name,
+          String filename,
           Function<Integer, T> setup,
           Consumer<T> fn,
           List<Integer> sizes,
-          int reps) {
+          int reps
+  ) {
     log = new Logger(name);
     log.println("\n========================================");
     final Map<Integer, Snapshot> res = benchAll(setup, fn, sizes, reps);
@@ -48,7 +48,6 @@ public class Benchmark {
     for (int sz : sizes) {
       log.aprintln(path, sz + ";" + res.get(sz).toFmt());
     }
-    return res;
   }
 
   private <T> Map<Integer, Snapshot> benchAll(
@@ -89,6 +88,7 @@ public class Benchmark {
                 fn.accept(state);
                 end();
                 durations.get().add(getDurationNs());
+                reset();
               }
               return null;
             }))

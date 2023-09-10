@@ -7,13 +7,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import src.utils.Triple;
-import src.utils.TsResult;
+import src.utils.ThreeSumResult;
 
-import static src.benchmark.Range.range;
+import static src.utils.Range.range;
 
-public class Ts {
+public class ThreeSum {
 
-  public static TsResult brute(List<Integer> l) {
+  public static ThreeSumResult brute(List<Integer> l) {
     final List<Triple<Integer>> result = new ArrayList<>();
     for (int i : range(l.size())) {
       for (int j : range(l.size())) {
@@ -25,14 +25,14 @@ public class Ts {
         }
       }
     }
-    return new TsResult(result);
+    return new ThreeSumResult(result);
   }
 
   // Improved version of brute force algorithm
   // that avoids duplicate triples
   // ! AS STATED DOES NOT COUNT SINCE ITS STILL O(N3)
   // ! JUST HERE COS ... WHY NOT
-  public static TsResult bruteI(List<Integer> l) {
+  public static ThreeSumResult bruteI(List<Integer> l) {
     final List<Triple<Integer>> result = new ArrayList<>();
     for (int i : range(0, l.size())) {
       for (int j : range(i + 1, l.size())) {
@@ -44,10 +44,10 @@ public class Ts {
         }
       }
     }
-    return new TsResult(result);
+    return new ThreeSumResult(result);
   }
 
-  public static TsResult cache(List<Integer> l) {
+  public static ThreeSumResult cache(List<Integer> l) {
     final Set<Integer> cache = new HashSet<>();
     final List<Triple<Integer>> result = new ArrayList<>();
 
@@ -67,10 +67,10 @@ public class Ts {
       }
     }
 
-    return new TsResult(result);
+    return new ThreeSumResult(result);
   }
 
-  public static TsResult cacheI(List<Integer> l) {
+  public static ThreeSumResult cacheI(List<Integer> l) {
     final Set<Integer> cache = new HashSet<>();
     final List<Triple<Integer>> result = new ArrayList<>();
 
@@ -85,11 +85,11 @@ public class Ts {
       cache.add(a);
     }
 
-    return new TsResult(result);
+    return new ThreeSumResult(result);
   }
 
-  public static TsResult twoP(List<Integer> l) {
-    final List<Integer> sorted = l.stream().sorted().collect(Collectors.toList());
+  public static ThreeSumResult twoP(List<Integer> l) {
+    final List<Integer> sorted = l.stream().sorted().toList();
     final List<Triple<Integer>> result = new ArrayList<>();
     int fp = 0;
     int bp = l.size() - 1;
@@ -117,6 +117,6 @@ public class Ts {
       bp = l.size() - 1;
     }
 
-    return new TsResult(result);
+    return new ThreeSumResult(result);
   }
 }

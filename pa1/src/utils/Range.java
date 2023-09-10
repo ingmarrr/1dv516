@@ -1,4 +1,4 @@
-package src.benchmark;
+package src.utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,7 +39,7 @@ public class Range implements Iterable<Integer> {
   @Override
   public Iterator<Integer> iterator() {
     final int max = end;
-    return new Iterator<Integer>() {
+    return new Iterator<>() {
       private int i = start;
 
       @Override

@@ -4,18 +4,14 @@ import java.util.Random;
 import java.util.function.Function;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import src.core.Ts;
-import src.logging.Logger;
+import src.core.ThreeSum;
 import src.benchmark.Benchmark;
-import src.benchmark.Snapshot;
 
-import static src.benchmark.Range.range;
+import static src.utils.Range.range;
 
 public class TsBench {
   private final static Random rand = new Random();
-  private final static Logger log = new Logger("BENCH ThreeSum");
 
   public static void main(String[] args) {
 
@@ -28,17 +24,17 @@ public class TsBench {
     final Function<Integer, List<Integer>> setup = setup(seed);
     final List<Integer> sizes = range(step, upper, step).toList();
 
-    final Map<Integer, Snapshot> cacheBench = bm.bench(
+    bm.bench(
             "Cache", "cache",
-            setup, Ts::cache, sizes, reps
+            setup, ThreeSum::cache, sizes, reps
     );
-    final Map<Integer, Snapshot> cacheIBench = bm.bench(
+    bm.bench(
             "Cache Improved", "cacheI",
-            setup, Ts::cacheI, sizes, reps
+            setup, ThreeSum::cacheI, sizes, reps
     );
-    final Map<Integer, Snapshot> twoP = bm.bench(
+    bm.bench(
             "Two Pointers", "twoP",
-            setup, Ts::twoP, sizes, reps
+            setup, ThreeSum::twoP, sizes, reps
     );
 
 
@@ -47,7 +43,7 @@ public class TsBench {
   private static Function<Integer, List<Integer>> setup(int seed) {
     return (sz) -> {
       final List<Integer> l = new ArrayList<>();
-      for (final int i : range(sz)) {
+      for (final int ignored : range(sz)) {
         l.add(rand.nextInt(-seed, seed));
       }
       return l;

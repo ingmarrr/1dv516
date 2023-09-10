@@ -2,13 +2,11 @@ package src.utils;
 
 import java.util.List;
 
-import src.logging.Logger;
 
-public class TsResult {
+public class ThreeSumResult {
   private final List<Triple<Integer>> result;
-  private final Logger log = new Logger("TsResult");
 
-  public TsResult(List<Triple<Integer>> result) {
+  public ThreeSumResult(List<Triple<Integer>> result) {
     this.result = result;
   }
 
@@ -26,7 +24,7 @@ public class TsResult {
   }
 
   public boolean has(int i, int j, int k) {
-    return has(new Triple<Integer>(i, j, k));
+    return has(new Triple<>(i, j, k));
   }
 
   public boolean isEmpty() {

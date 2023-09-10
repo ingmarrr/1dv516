@@ -1,15 +1,6 @@
 package src.utils;
 
-public class Triple<T> implements Comparable<Triple<T>> {
-  public T first;
-  public T second;
-  public T third;
-
-  public Triple(T first, T second, T third) {
-    this.first = first;
-    this.second = second;
-    this.third = third;
-  }
+public record Triple<T>(T first, T second, T third) implements Comparable<Triple<T>> {
 
   public String toString() {
     return String.format("(%s, %s, %s)", first, second, third);

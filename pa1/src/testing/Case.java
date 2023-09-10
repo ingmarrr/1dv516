@@ -1,9 +1,9 @@
 package src.testing;
 
 public class Case {
-  public String name;
-  public boolean expected;
-  public boolean actual;
+  final public String name;
+  final public boolean expected;
+  final public boolean actual;
 
   public Case(String name, boolean expected, boolean actual) {
     this.name = name;

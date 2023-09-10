@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QUnionFind implements IUnionFind {
-  private List<Integer> ids;
+  final private List<Integer> ids;
 
   public QUnionFind(int N) {
-    ids = new ArrayList<Integer>();
+    ids = new ArrayList<>();
     for (int i = 0; i < N; i++) {
       ids.add(i);
     }

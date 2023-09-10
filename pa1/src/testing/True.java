@@ -9,10 +9,6 @@ public class True {
     this.expected = expected;
   }
 
-  public boolean passed() {
-    return this.expected == true;
-  }
-
   public static True of(String name, boolean expected) {
     return new True(name, expected);
   }

@@ -9,10 +9,6 @@ public class False {
     this.expected = expected;
   }
 
-  public boolean passed() {
-    return this.expected == false;
-  }
-
   public static False of(String name, boolean expected) {
     return new False(name, expected);
   }
