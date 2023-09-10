@@ -43,7 +43,13 @@ test_ts: build
 fit:
 	python3.11 analysis/fit.py 
 
-view: view_qf view_wqf
+view: view_ts view_qf view_wqf
+
+view_ts:
+	@python3.11 analysis/main.py ts
+
+view_uf:
+	@python3.11 analysis/main.py uf
 
 view_qf:
 	@python3.11 analysis/main.py qf

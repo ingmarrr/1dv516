@@ -6,3 +6,5 @@ twosum/
 pa1/bin/
 pa1/__pycache__
 pa1/analysis/.ipynb_checkpoints
+.DS_Store
+pa1/pa1.iml

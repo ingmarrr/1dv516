@@ -7,7 +7,9 @@ DATA_DIR = "./logs/"
 @dataclass
 class Row:
     size: int
-    time: float
+    duration: float
+    mean: float
+    repeats: int
 
 
 def load_csv(path: str) -> np.ndarray:
