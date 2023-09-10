@@ -18,11 +18,21 @@ build: clean
 	@mkdir -p bin
 	@$(JAVAC) $(JFLAGS) $(SOURCES)
 
-bench: build
-	@java -cp bin src.benchmark.Bench
 
 clean:
 	@if [ -d bin ]; then rm -rf bin; fi
+
+# ==========================
+# JAVA BENCHMARKING COMMANDS
+# ==========================
+
+bench: bench_uf bench_ts
+
+bench_uf: build
+	@java -cp bin benchmarks.UfBench
+
+bench_ts: build
+	@java -cp bin benchmarks.TsBench
 
 # ==========================
 # JAVA TESTING COMMANDS

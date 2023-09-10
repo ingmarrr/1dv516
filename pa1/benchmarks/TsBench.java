@@ -1,6 +1,7 @@
 package benchmarks;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,6 @@ import src.benchmark.Benchmark;
 import static src.utils.Range.range;
 
 public class TsBench {
-  private final static Random rand = new Random();
 
   public static void main(String[] args) {
 
@@ -25,18 +25,14 @@ public class TsBench {
     final List<Integer> sizes = range(step, upper, step).toList();
 
     bm.bench(
-            "Cache", "cache",
-            setup, ThreeSum::cache, sizes, reps
-    );
+        "Threesum - Cache", "cache",
+        setup, ThreeSum::cache, sizes, reps);
     bm.bench(
-            "Cache Improved", "cacheI",
-            setup, ThreeSum::cacheI, sizes, reps
-    );
+        "Threesum - Cache Improved", "cacheI",
+        setup, ThreeSum::cacheI, sizes, reps);
     bm.bench(
-            "Two Pointers", "twoP",
-            setup, ThreeSum::twoP, sizes, reps
-    );
-
+        "Threesum -Two Pointers", "twoP",
+        setup, ThreeSum::twoP, sizes, reps);
 
   }
 
@@ -44,7 +40,8 @@ public class TsBench {
     return (sz) -> {
       final List<Integer> l = new ArrayList<>();
       for (final int ignored : range(sz)) {
-        l.add(rand.nextInt(-seed, seed));
+        final int rndInt = ThreadLocalRandom.current().nextInt(-seed, seed);
+        l.add(rndInt);
       }
       return l;
     };

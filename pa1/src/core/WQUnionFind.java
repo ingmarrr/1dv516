@@ -41,4 +41,11 @@ public class WQUnionFind implements IUnionFind {
     }
     return a;
   }
+
+  public WQUnionFind clone() {
+    final WQUnionFind uf = new WQUnionFind(ids.size());
+    uf.ids.addAll(ids);
+    uf.sizes.addAll(sizes);
+    return uf;
+  }
 }

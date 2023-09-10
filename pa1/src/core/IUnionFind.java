@@ -6,4 +6,6 @@ public interface IUnionFind {
   boolean connected(int a, int b);
 
   int root(int a);
+
+  IUnionFind clone();
 }

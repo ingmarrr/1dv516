@@ -33,6 +33,14 @@ public class QUnionFind implements IUnionFind {
     return a;
   }
 
+  public QUnionFind clone() {
+    QUnionFind uf = new QUnionFind(this.ids.size());
+    for (int i = 0; i < this.ids.size(); i++) {
+      uf.ids.set(i, this.ids.get(i));
+    }
+    return uf;
+  }
+
   public List<Integer> getIds() {
     return ids;
   }

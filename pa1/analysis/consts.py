@@ -1,12 +1,10 @@
 
-QFRES_PATH = "logs/qfres.csv"
-WQFRES_PATH = "logs/wqfres.csv"
 
-QFRES_CSV = "qfres.csv"
-WQFRES_CSV = "wqfres.csv"
-CACHE_CSV = "cache.csv"
-CACHEI_CSV = "cacheI.csv"
-TWOP_CSV = "twoP.csv"
+QF_BENCH_CSV = "qf_bench.csv"
+WQF_BENCH_CSV = "wqf_bench.csv"
+CACHE_BENCH_CSV = "cache_bench.csv"
+CACHEI_BENCH_CSV = "cacheI_bench.csv"
+TWOP_BENCH_CSV = "twoP_bench.csv"
 
 OUTPUT_DIR = "logs/"
 PLOT_DIR = "plots/"

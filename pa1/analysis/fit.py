@@ -18,11 +18,11 @@ def fit(x: np.ndarray, y: np.ndarray, func: Callable) -> tuple[np.ndarray, np.nd
     return popt, pcov
 
 def main():
-    dat = data.load_csv(consts.QFRES_CSV)
+    dat = data.load_csv(consts.QF_BENCH_CSV)
     x, y = dat[:,0], dat[:,1]
     popt, _ = fit(x, y, quadratic)
     view.plot_fit(x, y, popt, quadratic)
-    dat = data.load_csv(consts.WQFRES_CSV)
+    dat = data.load_csv(consts.WQF_BENCH_CSV)
     x, y = dat[:,0], dat[:,1]
     popt, _ = fit(x, y, linear)
     view.plot_fit(x, y, popt, linear)

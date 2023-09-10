@@ -8,20 +8,26 @@ public record Snapshot(long duration, long mean, int reps) {
   }
 
   public String toFmt() {
-    return "Duration :" + fmtNano(duration) + " | Mean: " + fmtNano(mean) + " | Reps: " +reps;
+    final String fmt = "%-20s";
+    return String.format(fmt, asMs(duration)) + String.format(fmt, asMs(mean)) + String.format(fmt, reps);
+  }
+
+  public static String headers() {
+    final String fmt = "%-20s";
+    return String.format(fmt, "duration") + String.format(fmt, "mean") + String.format(fmt, "reps");
   }
 
   private float asMs(long nanoTime) {
     return nanoTime / 1000f;
   }
 
-  private String fmtNano(long nanoTime) {
+  public static String fmtNano(long nanoTime) {
     if (nanoTime < 1_000) {
       return nanoTime + " ns";
     } else if (nanoTime < 1_000_000) {
-      return nanoTime / 1_000.0 + " µs";  // microseconds
+      return nanoTime / 1_000.0 + " µs"; // microseconds
     } else if (nanoTime < 1_000_000_000) {
-      return nanoTime / 1_000_000.0 + " ms";  // milliseconds
+      return nanoTime / 1_000_000.0 + " ms"; // milliseconds
     } else {
       double seconds = nanoTime / 1_000_000_000.0;
       if (seconds < 60) {

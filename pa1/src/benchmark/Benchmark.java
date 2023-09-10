@@ -8,7 +8,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.IntStream;
@@ -16,45 +15,37 @@ import java.util.stream.IntStream;
 import src.logging.Logger;
 
 public class Benchmark {
-  private long start;
-  private long end;
   private Logger log;
 
   public Benchmark() {
   }
 
   public <T> void bench(
-          String name,
-          String filename,
-          Function<Integer, T> setup,
-          Consumer<T> fn,
-          List<Integer> sizes,
-          int reps
-  ) {
+      String name,
+      String filename,
+      Function<Integer, T> setup,
+      Consumer<T> fn,
+      List<Integer> sizes,
+      int reps) {
     log = new Logger(name);
     log.println("\n========================================");
+    log.println("Benchmarking " + name);
+    log.bench("size\t" + Snapshot.headers());
     final Map<Integer, Snapshot> res = benchAll(setup, fn, sizes, reps);
-    log.println("\n . . . . . . . . . . . . . . . . . . . .");
-    for (int sz : sizes) {
-      final String fmt = String.format("%-20s", res.get(sz).toFmt());
-      final String szFmt = String.format("%-10s", String.format("%,d", sz));
-      log.bench(szFmt + "\t" + fmt);
-    }
-    log.println("\n . . . . . . . . . . . . . . . . . . . .");
     log.println("\n========================================");
 
-    final String path = filename + ".csv";
+    final String path = filename + "_bench.csv";
     log.fprintln(path, "size; duration; mean; reps");
     for (int sz : sizes) {
-      log.aprintln(path, sz + ";" + res.get(sz).toFmt());
+      log.aprintln(path, sz + ";" + res.get(sz).toString());
     }
   }
 
   private <T> Map<Integer, Snapshot> benchAll(
-          Function<Integer, T> setup,
-          Consumer<T> fn,
-          List<Integer> sizes,
-          int reps) {
+      Function<Integer, T> setup,
+      Consumer<T> fn,
+      List<Integer> sizes,
+      int reps) {
     final Map<Integer, Snapshot> results = new HashMap<>();
     final int threads = Runtime.getRuntime().availableProcessors();
     final ExecutorService executor = Executors.newFixedThreadPool(threads);
@@ -70,29 +61,27 @@ public class Benchmark {
   }
 
   private <T> Snapshot benchSize(
-          Function< Integer, T> setup,
-          Consumer<T> fn,
-          int size,
-          int reps,
-          int nrThreads,
-          ExecutorService executor
-  ) {
-    log.println("\nSIZE :: " + String.format("%,d", size) + "\nREPS :: " + reps);
+      Function<Integer, T> setup,
+      Consumer<T> fn,
+      int size,
+      int reps,
+      int nrThreads,
+      ExecutorService executor) {
     final int repsPerThread = reps / nrThreads;
-    final AtomicReference<ConcurrentLinkedQueue<Long>> durations = new AtomicReference<>();
+    final ConcurrentLinkedQueue<Long> durations = new ConcurrentLinkedQueue<>();
     List<Future<Object>> futures = IntStream.range(0, nrThreads)
-            .mapToObj(threadIndex -> executor.submit(() -> {
-              for (int j = 0; j < repsPerThread; j++) {
-                T state = setup.apply(size);
-                start();
-                fn.accept(state);
-                end();
-                durations.get().add(getDurationNs());
-                reset();
-              }
-              return null;
-            }))
-            .toList();
+        .mapToObj(threadIndex -> executor.submit(() -> {
+          for (int j = 0; j < repsPerThread; j++) {
+            T state = setup.apply(size);
+            final long start = System.nanoTime();
+            fn.accept(state);
+            final long end = System.nanoTime();
+            final long duration = end - start;
+            durations.add(duration);
+          }
+          return null;
+        }))
+        .toList();
 
     for (Future<Object> future : futures) {
       try {
@@ -102,25 +91,10 @@ public class Benchmark {
       }
     }
 
-    final long duration = durations.get().stream().reduce(0L, Long::sum);
+    final long duration = durations.stream().reduce(0L, Long::sum);
     final long mean = duration / reps;
-    return new Snapshot(duration, mean, reps);
-  }
-
-  public long getDurationNs() {
-    return end - start;
-  }
-
-  private void start() {
-    start = System.nanoTime();
-  }
-
-  private void end() {
-    end = System.nanoTime();
-  }
-
-  private void reset() {
-    start = 0;
-    end = 0;
+    final Snapshot st = new Snapshot(duration, mean, reps);
+    log.bench(size + size < 1000 ? "\t" : "" + "\t" + st.toFmt());
+    return st;
   }
 }

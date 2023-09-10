@@ -15,6 +15,10 @@ public class Logger {
     System.out.println(s);
   }
 
+  public void print(String s) {
+    System.out.print(s);
+  }
+
   public LogResult fprintln(String file, String s) {
     File logDir = new File(LOG_DIR);
     if (!logDir.exists()) {
@@ -55,12 +59,11 @@ public class Logger {
     return LogResult.Ok;
   }
 
-
   public void log(Level level, String s) {
     System.out.println(level.toString() + "\t:: " + this.prefix + " :: " + s);
   }
 
-  public  void log(Level level, Object... os) {
+  public void log(Level level, Object... os) {
     System.out.println(level.toString() + "\t:: " + this.prefix + " :: ");
     for (Object o : os) {
       System.out.print(o.toString() + " ");
@@ -75,7 +78,6 @@ public class Logger {
   public void debug(Object... os) {
     log(Level.DEBUG, os);
   }
-
 
   public void info(String s) {
     log(Level.INFO, s);
