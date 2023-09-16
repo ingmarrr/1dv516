@@ -5,6 +5,7 @@ JFLAGS = -d bin -sourcepath src
 # Source files
 SOURCES = $(shell find . -name '*.java')
 TESTS = $(shell find ./tests -name '*.java')
+BENCHS = $(shell find ./benchmarks -name '*.java')
 OS := $(shell uname)
 
 # Default target
@@ -31,6 +32,9 @@ bench: bench_uf bench_ts
 bench_uf: build
 	@java -cp bin benchmarks.UfBench
 
+bench_clean_wqf:
+	@python3.11 analysis/clean_wqf.py
+
 bench_ts: build
 	@java -cp bin benchmarks.TsBench
 
@@ -53,7 +57,8 @@ test_ts: build
 fit:
 	python3.11 analysis/fit.py 
 
-view: view_ts view_qf view_wqf
+view:
+	@python3.11 analysis/main.py all
 
 view_ts:
 	@python3.11 analysis/main.py ts
@@ -83,7 +88,7 @@ pyactivate:
 ifeq ($(OS),Darwin)
 	. .venv/bin/activate
 else ifeq ($(OS),Linux)
-	@. .venv/bin/activate
+	. .venv/bin/activate
 else
-	@.\venv_name\Scripts\activate
+	.\venv_name\Scripts\activate
 endif

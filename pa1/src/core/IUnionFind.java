@@ -1,5 +1,7 @@
 package src.core;
 
+import java.util.List;
+
 public interface IUnionFind {
   void union(int a, int b);
 
@@ -8,4 +10,6 @@ public interface IUnionFind {
   int root(int a);
 
   IUnionFind clone();
+
+  List<Integer> getIds();
 }

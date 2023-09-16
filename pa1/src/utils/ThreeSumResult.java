@@ -2,7 +2,6 @@ package src.utils;
 
 import java.util.List;
 
-
 public class ThreeSumResult {
   private final List<Triple<Integer>> result;
 
@@ -16,7 +15,7 @@ public class ThreeSumResult {
 
   public boolean has(Triple<Integer> triple) {
     for (Triple<Integer> t : result) {
-      if (t.compareTo(triple) == 0) {
+      if (t.equals(triple)) {
         return true;
       }
     }
@@ -29,5 +28,9 @@ public class ThreeSumResult {
 
   public boolean isEmpty() {
     return result.isEmpty();
+  }
+
+  public int size() {
+    return result.size();
   }
 }

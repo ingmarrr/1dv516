@@ -16,7 +16,6 @@ public class Test {
         .toArray(Case[]::new);
     final TestResult result = new TestResult(converted);
     final Logger log = new Logger(name);
-    log.test("Running tests for " + name + "...");
     log.test(result.toString());
     return result.passed();
   }
@@ -30,7 +29,6 @@ public class Test {
         .toArray(Case[]::new);
     final TestResult result = new TestResult(converted);
     final Logger log = new Logger(name);
-    log.test("Running tests for " + name + "...");
     log.test(result.toString());
     return result.passed();
   }
@@ -41,7 +39,6 @@ public class Test {
       Case... cases) {
     final TestResult result = new TestResult(cases);
     final Logger log = new Logger(name);
-    log.test("Running tests for " + name + "...");
     log.test(result.toString());
     return result.passed();
   }

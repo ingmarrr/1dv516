@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Logger {
   final private String prefix;
-  private static final String LOG_DIR = "logs";
+  private static final String OUT_DIR = "bench_results";
 
   public Logger(String prefix) {
     this.prefix = prefix;
@@ -20,7 +20,7 @@ public class Logger {
   }
 
   public LogResult fprintln(String file, String s) {
-    File logDir = new File(LOG_DIR);
+    File logDir = new File(OUT_DIR);
     if (!logDir.exists()) {
       try {
         if (!logDir.mkdir()) {
@@ -31,7 +31,7 @@ public class Logger {
       }
     }
 
-    try (java.io.FileWriter fw = new java.io.FileWriter(LOG_DIR + "/" + file, false)) {
+    try (java.io.FileWriter fw = new java.io.FileWriter(OUT_DIR + "/" + file, false)) {
       fw.write(s + "\n");
     } catch (IOException e) {
       return LogResult.ErrorWritingToFile;
@@ -40,7 +40,7 @@ public class Logger {
   }
 
   public LogResult aprintln(String file, String s) {
-    File logDir = new File(LOG_DIR);
+    File logDir = new File(OUT_DIR);
     if (!logDir.exists()) {
       try {
         if (!logDir.mkdir()) {
@@ -51,7 +51,7 @@ public class Logger {
       }
     }
 
-    try (java.io.FileWriter fw = new java.io.FileWriter(LOG_DIR + "/" + file, true)) {
+    try (java.io.FileWriter fw = new java.io.FileWriter(OUT_DIR + "/" + file, true)) {
       fw.write(s + "\n");
     } catch (IOException e) {
       return LogResult.ErrorWritingToFile;

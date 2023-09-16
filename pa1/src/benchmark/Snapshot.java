@@ -7,6 +7,10 @@ public record Snapshot(long duration, long mean, int reps) {
     return asMs(duration) + ";" + asMs(mean) + ";" + reps;
   }
 
+  public String toStringSecs() {
+    return asSecs(duration) + ";" + asSecs(mean) + ";" + reps;
+  }
+
   public String toFmt() {
     final String fmt = "%-20s";
     return String.format(fmt, asMs(duration)) + String.format(fmt, asMs(mean)) + String.format(fmt, reps);
@@ -18,7 +22,11 @@ public record Snapshot(long duration, long mean, int reps) {
   }
 
   private float asMs(long nanoTime) {
-    return nanoTime / 1000f;
+    return nanoTime / 1_000_000f;
+  }
+
+  private float asSecs(long nanoTime) {
+    return asMs(nanoTime) / 1_000f;
   }
 
   public static String fmtNano(long nanoTime) {
