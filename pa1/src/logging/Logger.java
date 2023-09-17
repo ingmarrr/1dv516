@@ -64,7 +64,7 @@ public class Logger {
   }
 
   public void log(Level level, Object... os) {
-    System.out.println(level.toString() + "\t:: " + this.prefix + " :: ");
+    System.out.print(level.toString() + "\t:: " + this.prefix + " :: ");
     for (Object o : os) {
       System.out.print(o.toString() + " ");
     }

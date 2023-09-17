@@ -38,6 +38,9 @@ bench_clean_wqf:
 bench_ts: build
 	@java -cp bin benchmarks.TsBench
 
+bench_pc: build
+	@java -cp bin benchmarks.PercolationBench
+
 # ==========================
 # JAVA TESTING COMMANDS
 # ==========================
@@ -49,6 +52,9 @@ test_uf: build
 
 test_ts: build
 	@java -cp bin tests.TsTest
+
+test_pc: build
+	@java -cp bin tests.PercolationTest
 
 # ==========================
 # PYTHON COMMANDS

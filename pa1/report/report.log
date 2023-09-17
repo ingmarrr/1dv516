@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.9)  17 SEP 2023 14:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.9)  17 SEP 2023 18:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -382,12 +382,12 @@ See the caption package documentation for explanation.
 LaTeX Warning: Reference `tab:quickunion' on page 10 undefined on input line 335.
 
 [10]
-<images/cache_i_ms_50k_mean.png, id=183, 722.7pt x 361.35pt>
+<images/cache_i_ms_50k_mean.png, id=193, 722.7pt x 361.35pt>
 File: images/cache_i_ms_50k_mean.png Graphic file (type png)
 <use images/cache_i_ms_50k_mean.png>
 Package pdftex.def Info: images/cache_i_ms_50k_mean.png  used on input line 382.
 (pdftex.def)             Requested size: 171.99075pt x 85.99243pt.
-<images/cache_i_rs_mean.png, id=185, 722.7pt x 361.35pt>
+<images/cache_i_rs_mean.png, id=195, 722.7pt x 361.35pt>
 File: images/cache_i_rs_mean.png Graphic file (type png)
 <use images/cache_i_rs_mean.png>
 Package pdftex.def Info: images/cache_i_rs_mean.png  used on input line 388.
@@ -418,7 +418,7 @@ Overfull \hbox (4.63257pt too wide) in paragraph at lines 439--461
  []
 
 [13]
-<images/comparison.png, id=205, 722.7pt x 361.35pt>
+<images/comparison.png, id=215, 722.7pt x 361.35pt>
 File: images/comparison.png Graphic file (type png)
 <use images/comparison.png>
 Package pdftex.def Info: images/comparison.png  used on input line 474.
@@ -431,21 +431,21 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: C6768595CB46FD378614A39FEBE5AD26;3233.
+(rerunfilecheck)             Checksum: BE614714B3F5263E1AC08DA6B6B1EADA;3556.
  ) 
 Here is how much of TeX's memory you used:
- 11443 strings out of 478994
- 172174 string characters out of 5858184
- 666800 words of memory out of 5000000
- 28735 multiletter control sequences out of 15000+600000
+ 11447 strings out of 478994
+ 172274 string characters out of 5858184
+ 666803 words of memory out of 5000000
+ 28737 multiletter control sequences out of 15000+600000
  412664 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,9n,74p,497b,1364s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on /Users/ingmarfalk/uni/1DV516_AlhorithmsAdvancedDataStructures/pa1/report/report.pdf (15 pages, 279736 bytes).
+Output written on /Users/ingmarfalk/uni/1DV516_AlhorithmsAdvancedDataStructures/pa1/report/report.pdf (15 pages, 284090 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 240 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 292 PDF objects out of 1000 (max. 8388607)
+ 251 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 

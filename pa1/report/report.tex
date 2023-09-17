@@ -479,13 +479,45 @@ therefore being $O(N^2)$ and the improved cached version, both of which have a t
 As can be observed in the diagram, the two pointer implementation lies right in between the two cache implementations,
 leading us to the confirmation that it has both a $\Omega{(N^2)}$ as well as an $O{(N^2)}$.
 
-\pagebreak
-
 \section{Problems - VG}
 
 \subsection{Problem 8 - Percolation}
 
-\section{Conclusion}
-The conclusion of the report.
+In this section I will quickly go over how I implemented problem 8 and then tested it as well
+as my approach for determining \emph{p*}.
+
+\subsubsection{Implementation}
+
+The main two components of my implementation are a \emph{n * n} zeroed grid (int[]) and one of the
+union find implementations, in my case the weighted quick union find with path compression.
+As already alluded to in the task description, when instantiating the union find object, instead of initiating
+it just with \emph{$n^2$}, we add two more sites to it, so called virtual sites. One will serve
+as the top and the other as the bottom site. Meaning that all the grid values are being stored from
+0 to n - 1 and the top value will be $n^2$ and the bottom $n^2 + 1$.
+
+The two crucial methods will be the \emph{open} and \emph{percolates} method. While the \emph{percolates}
+method is simply calling the union finds \emph{connected} function with the top and bottom value to check if
+there is a valid path through the grid, the open method is a bit more complex. After validating that
+the row and column are indeed valid to be inserted and the site they describe is not already open, we open the 
+site by setting it to 1 and increasing the internal tracker of how many sites are already open.
+In order to connect new opened sites now, we check all fields horizontally and vertically adjacent
+to it. If the site is also open, we call the \emph{union} method of the union find on both points.
+
+\subsubsection{Testing}
+
+In order to make sure that the implementation was working, I created a simple \emph{4x4} grid
+and opened specific fields manually in a way that I knew they had to make the grid percolating.
+This confirmed that what I had done worked correctly so I could move on to calculating the threshold.
+
+\subsubsection{Calculating threshold}
+
+For the calculation of the \emph{p} threshold I, as suggested, made use of the \emph{monte carlo}
+approach. This quite frankly means, taking randomly generated input to approximate a value, that could have been
+deterministically evaluated, but might take a lot of effort and time. In our case, that means
+initialising an \emph{Percolation} instance for a size \emph{n}, and randomly opening a site
+until the grid percolates. The number of trials in this case is simply \emph{$n^2$}. This is done multiple times,
+in this case 500 times, after which the average is taken and those results used to calculate the 
+standard deviation. This was done for 250 \emph{n's} ranging from 2 to 500. This resulted in a
+final result of \emph{p* = 0.59191} with a standard deviation of \emph{std\_dev = 0.01261}.
 
 \end{document}
