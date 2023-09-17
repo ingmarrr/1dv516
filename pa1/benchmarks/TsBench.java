@@ -21,8 +21,7 @@ public class TsBench {
     final int reps = 50;
     final Function<Integer, List<Integer>> setup = setup(seed);
     final List<Integer> sizes = range(100, upper, step).toList();
-    // bm.benchST("Threesum - Cache Improved", "cache_i_50k", setup,
-    // ThreeSum::cacheI, sizes, reps);
+    bm.benchST("Threesum - Cache Improved", "cache_i_50k", setup, ThreeSum::cacheI, sizes, reps);
 
     final int cacheUpper = 5_000;
     final int cacheStep = 500;
@@ -35,14 +34,13 @@ public class TsBench {
     final int bruteUpper = 1000;
     final int bruteReps = 10;
     final List<Integer> bruteSizes = range(bruteStep, bruteUpper, bruteStep).toList();
-    // bm.benchST("Threeum - Brute", "brute", setup, ThreeSum::brute, bruteSizes,
+    bm.benchST("Threeum - Brute", "brute", setup, ThreeSum::brute, bruteSizes, bruteReps);
 
     final int twoPStep = 100;
     final int twoPUpper = 5000;
     final int twoPReps = 20;
     final List<Integer> twoPSizes = range(twoPStep, twoPUpper, twoPStep).toList();
-    // bm.benchST("Threesum - Two Pointers", "two_p", setup, ThreeSum::twoP,
-    // twoPSizes, twoPReps);
+    bm.benchST("Threesum - Two Pointers", "two_p", setup, ThreeSum::twoP, twoPSizes, twoPReps);
 
   }
 

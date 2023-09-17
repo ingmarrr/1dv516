@@ -78,6 +78,9 @@ def twoP() -> None:
 
 
 def all() -> None:
+    if not os.path.exists(consts.DATA_DIR):
+        print("No data generated yet. Please run `make bench` first. This may take a while.")
+        return
     files = os.listdir(consts.DATA_DIR)
     for file in sorted(files):
         data = d.load_csv(file)

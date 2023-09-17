@@ -9,6 +9,8 @@ All the java commands rely on build so it should not be necessary to run this co
 
 ## Running The Tests
 
+I dont recommend running all the tests together since there is a lot of output and that might be a bit overwhelming. So I recommend to run them individually. I will probably try and improve that for the next submission but for this one it is still a lot, also because there a quite a few tests.
+
 ```bash
 make test
 
@@ -23,6 +25,9 @@ make test_pc
 ```
 
 ## Running The Benchmarks
+
+Running all benchmarks is going to take a couple of minutes, so I recommend to, if you
+as the person correcting this want to run all benchmarks, to run start them before you start correcting in order to save some time. And then once they are finished you can have a look at them. Otherwise you can run them individually.
 
 ```bash
 make bench
