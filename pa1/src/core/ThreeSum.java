@@ -30,10 +30,6 @@ public class ThreeSum {
     return new ThreeSumResult(result);
   }
 
-  // Improved version of brute force algorithm
-  // that avoids duplicate triples
-  // ! AS STATED DOES NOT COUNT SINCE ITS STILL O(N3)
-  // ! JUST HERE COS ... WHY NOT
   public static ThreeSumResult bruteI(List<Integer> l) {
     final List<Triple<Integer>> result = new ArrayList<>();
     //@formatter:off
@@ -105,7 +101,7 @@ public class ThreeSum {
     int bp = l.size() - 1;                                  // O(1)
 
     for (int a : l) {                                       // O(N)
-      while (fp < bp) {                                     // Best : O(N^2/2) |  Worst : O(N^2)
+      while (fp < bp) {                                     // O(N) -> O(N^2) times
         final int negA = -a;                                // N^2
         final int b = sorted.get(fp);                       // N^2
         final int c = sorted.get(bp);                       // N^2
@@ -119,7 +115,6 @@ public class ThreeSum {
           final Triple<Integer> tr = new Triple<>(a, b, c); // ..
           result.add(tr);                                   // ..
           fp++;                                             // ..
-          bp--;                                             // ..
         }
       }
       fp = 0;                                               // N

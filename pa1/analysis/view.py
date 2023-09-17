@@ -5,8 +5,30 @@ import os
 
 import consts
 
+SHOW = False
 
-def plot(data: np.ndarray, title: str, xlabel: str, ylabel: str, path: str) -> None:
+def plot_multiple(
+    data: dict[str, np.ndarray],
+    title: str, 
+    xlabel: str, 
+    ylabel: str, 
+    path: str, 
+    show: bool = False
+) -> None:
+    plt.figure(figsize=(10, 5))
+    for d in data:
+        plt.plot(data[d][:, 0], data[d][:, 1], "o-", label=d)
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.legend()
+    if SHOW or show:
+        if not os.path.exists(consts.PLOT_DIR):
+            os.makedirs(consts.PLOT_DIR)
+        plt.savefig(consts.PLOT_DIR + path + ".png")
+        plt.show()
+
+def plot(data: np.ndarray, title: str, xlabel: str, ylabel: str, path: str, show: bool = False) -> None:
     plt.figure(figsize=(10, 5))
     plt.plot(data[:, 0], data[:, 1], "o-", label="data")
     plt.title(title)
@@ -16,7 +38,8 @@ def plot(data: np.ndarray, title: str, xlabel: str, ylabel: str, path: str) -> N
     if not os.path.exists(consts.PLOT_DIR):
         os.makedirs(consts.PLOT_DIR)
     plt.savefig(consts.PLOT_DIR + path + ".png")
-    plt.show()
+    if SHOW or show:
+        plt.show()
     plt.close()
 
 
@@ -32,7 +55,8 @@ def plot_mean(
     if not os.path.exists(consts.PLOT_DIR):
         os.makedirs(consts.PLOT_DIR)
     plt.savefig(consts.PLOT_DIR + path + "_mean.png")
-    plt.show()
+    if SHOW:
+        plt.show()
     plt.close()
 
 
@@ -49,7 +73,8 @@ def plot_scale_y(
     if not os.path.exists(consts.PLOT_DIR):
         os.makedirs(consts.PLOT_DIR)
     plt.savefig(consts.PLOT_DIR + path + ".png")
-    plt.show()
+    if SHOW:
+        plt.show()
     plt.close()
 
 
@@ -70,7 +95,8 @@ def plot_fit(
     if not os.path.exists(consts.FIT_DIR):
         os.makedirs(consts.FIT_DIR)
     plt.savefig(consts.FIT_DIR + path + "_fit.png")
-    plt.show()
+    if SHOW:
+        plt.show()
     plt.close()
 
 

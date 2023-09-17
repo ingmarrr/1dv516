@@ -1,8 +1,8 @@
 
 # Cubic Fit
 
-a (x^3 coefficient) = -3.0476306083172667e-06
-b (x^2 coefficient) = 0.005750959825151009
-c (x coefficient) = -0.8548574777454774
-d (constant term) = 71.92146216814355
-y = -0.0000x^3 + 0.0058x^2 + -0.8549x + 71.9215
+a (x^3 coefficient) = 5.057626982823774e-08
+b (x^2 coefficient) = 0.0010597363938812808
+c (x coefficient) = -0.3169659294882934
+d (constant term) = 106.8233163949199
+y = 0.0000x^3 + 0.0011x^2 + -0.3170x + 106.8233

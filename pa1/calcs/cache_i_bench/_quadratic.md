@@ -1,7 +1,7 @@
 
 # Quadratic Fit
 
-a (x^2 coefficient) = 1.4495286210645665e-07
-b (x coefficient) = 0.05506474902694805
-c (constant term) = 1.6619516286897336
-y = 0.0000x^2 + 0.0551x + 1.6620
+a (x^2 coefficient) = 8.197886069411023e-08
+b (x coefficient) = 0.11724522211874748
+c (constant term) = -0.08568538453644536
+y = 0.0000x^2 + 0.1172x + -0.0857

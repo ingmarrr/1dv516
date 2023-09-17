@@ -16,18 +16,19 @@ public class TsTest {
 
   public static void main(String[] args) {
     final boolean[] results = {
-        tsBrute(),
-        tsBrute2(),
-        tsBruteFalse(),
-        tsBruteI(),
-        tsBruteIFalse(),
-        tsCache(),
-        tsCache2(),
-        tsCacheFalse(),
-        tsCacheI(),
-        tsCacheI2(),
-        tsCINegNum(),
-        tsCINoSolution(),
+        // tsBrute(),
+        // tsBrute2(),
+        tsBruteMultiple(),
+        // tsBruteFalse(),
+        // tsBruteI(),
+        // tsBruteIFalse(),
+        // tsCache(),
+        // tsCache2(),
+        // tsCacheFalse(),
+        // tsCacheI(),
+        // tsCacheI2(),
+        // tsCINegNum(),
+        // tsCINoSolution(),
         tsCIMultiple(),
         tsTwoP(),
         tsTwoPNoSolution(),
@@ -101,6 +102,26 @@ public class TsTest {
         True.of("(-1, 0, 1)", result.has(-1, 0, 1)),
         True.of("(0, 1, -1)", result.has(0, 1, -1)),
         True.of("Length 2", result.size() == 2));
+  }
+
+  private static boolean tsBruteMultiple() {
+    List<Integer> input = Arrays.asList(-2, -2, -1, -3, 4, 5);
+    ThreeSumResult result = ThreeSum.twoP(input);
+    log.test("input: " + input);
+    log.test("result: " + result);
+    log.test("len: " + result.size());
+    return Test.assertTrue(
+        "testTwoPMultiple",
+        True.of("(-2, -3, 5)", result.has(-2, -3, 5)),
+        True.of("(-2, -2, 4)", result.has(-2, -2, 4)),
+        True.of("(-2, -3, 5)", result.has(-2, -3, 5)),
+        True.of("(-2, -2, 4)", result.has(-2, -2, 4)),
+        True.of("(-1, -3, 4)", result.has(-1, -3, 4)),
+        True.of("(-3, -2, 5)", result.has(-3, -2, 5)),
+        True.of("(-3, -1, 4)", result.has(-3, -1, 4)),
+        True.of("(4, -3, -1)", result.has(4, -3, -1)),
+        True.of("(4, -2, -2)", result.has(4, -2, -2)),
+        True.of("(5, -3, -2)", result.has(5, -3, -2)));
   }
 
   private static boolean tsBruteIFalse() {
@@ -199,6 +220,8 @@ public class TsTest {
     ThreeSumResult result = ThreeSum.cacheI(input);
     log.test("input: " + input);
     // Expected: [(-2, -2, 4), (-2, -1, 3)]
+    log.test("result: " + result);
+    log.test("len: " + result.size());
     return Test.assertTrue(
         "Cache Improved testMultiple",
         True.of("(-2, -2, 4)", result.has(new Triple<>(-2, -2, 4))),
@@ -244,6 +267,8 @@ public class TsTest {
      * (4, -2, -2),
      * (5, -3, -2)]
      */
+    log.test("result: " + result);
+    log.test("len: " + result.size());
     return Test.assertTrue(
         "testTwoPMultiple",
         True.of("(-2, -3, 5)", result.has(-2, -3, 5)),

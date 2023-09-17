@@ -114,18 +114,18 @@ def fit_files(files: list[str]) -> None:
         popt_quadratic, _ = fit(dir + file_quadratic, "Quadratic", x, y, quadratic)
         popt_cubic, _ = fit(dir + file_cubic, "Cubic", x, y, cubic)
         popt_log, _ = fit(dir + file_log, "Log", x, y, log)
-        # view.plot_fit(dir + file_power, x, y, popt_power, power)
-        # view.plot_fit(dir + file_linear, x, y, popt_linear, linear)
-        # view.plot_fit(dir + file_quadratic, x, y, popt_quadratic, quadratic)
-        # view.plot_fit(dir + file_cubic, x, y, popt_cubic, cubic)
-        # view.plot_fit(dir + file_log, x, y, popt_log, log)
+        view.plot_fit(dir + file_power, x, y, popt_power, power)
+        view.plot_fit(dir + file_linear, x, y, popt_linear, linear)
+        view.plot_fit(dir + file_quadratic, x, y, popt_quadratic, quadratic)
+        view.plot_fit(dir + file_cubic, x, y, popt_cubic, cubic)
+        view.plot_fit(dir + file_log, x, y, popt_log, log)
 
 
 def main():
-    if len(sys.argv) == 2:
-        path = sys.argv[1]
-        fit_files([path])
-        return
+    # if len(sys.argv) == 2:
+    #     path = sys.argv[1]
+    #     fit_files([path])
+    #     return
 
     all()
 

@@ -1,6 +1,6 @@
 
 # Linear Fit
 
-a (x coefficient) = 0.3239194387635965
-b (constant term) = -35.30957578524549
-y = 0.3239x + -35.3096
+a (x coefficient) = 1.0782100631440483
+b (constant term) = -946.2872984740055
+y = 1.0782x + -946.2873
