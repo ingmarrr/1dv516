@@ -3,6 +3,10 @@
 
 To be able to run everything, I provided a `Makefile` that exposes commands to run all the tests, benchmarks, visualizations, etc.
 
+## Building The Project
+
+All the java commands rely on build so it should not be necessary to run this command, but if you want to, you can run `make build` to build the project. To clean any build artifacts, you can run `make clean`.
+
 ## Running The Tests
 
 ```bash
