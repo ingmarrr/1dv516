@@ -2,3 +2,4 @@
 .vscode
 analysis/__pycache__
 vscode.settings.json
+threesum_rs/target
