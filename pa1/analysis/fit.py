@@ -122,10 +122,10 @@ def fit_files(files: list[str]) -> None:
 
 
 def main():
-    # if len(sys.argv) == 2:
-    #     path = sys.argv[1]
-    #     fit_files([path])
-    #     return
+    if len(sys.argv) == 2:
+        path = sys.argv[1]
+        fit_files([path])
+        return
 
     all()
 

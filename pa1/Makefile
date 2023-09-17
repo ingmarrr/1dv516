@@ -32,9 +32,6 @@ bench: bench_uf bench_ts
 bench_uf: build
 	@java -cp bin benchmarks.UfBench
 
-bench_clean_wqf:
-	@python3.11 analysis/clean_wqf.py
-
 bench_ts: build
 	@java -cp bin benchmarks.TsBench
 
@@ -45,7 +42,7 @@ bench_pc: build
 # JAVA TESTING COMMANDS
 # ==========================
 
-test: test_uf test_ts
+test: test_uf test_ts test_pc
 
 test_uf: build
 	@java -cp bin tests.UfTest

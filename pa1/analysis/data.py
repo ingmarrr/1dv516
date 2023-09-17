@@ -4,15 +4,6 @@ from dataclasses import dataclass
 import consts
 
 
-
-@dataclass
-class Row:
-    size: int
-    duration: float
-    mean: float
-    repeats: int
-
-
 def load_csv(path: str) -> np.ndarray:
     print("Loading data from: " + consts.DATA_DIR + path)
     return np.genfromtxt(consts.DATA_DIR + path, delimiter=";", skip_header=1)

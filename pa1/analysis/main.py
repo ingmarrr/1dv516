@@ -18,12 +18,11 @@ def main():
             qf()
             wqf()
         case "ts":
-            rs_cache_i()
             brute()
-            # cache()
+            cache()
             cache_i()
             ts_brute_vs_cache_vs_two_p()
-            # twoP()
+            twoP()
         
         case "qf":
             qf()
@@ -48,8 +47,6 @@ def wqf() -> None:
     v.plot(wqfdata, "QWUnionFind", "Size", "Time in Ms", consts.WQF_BENCH)
     wqfdata = d.load_csv("wqf_bench.csv")
     v.plot(wqfdata, "QWUnionFind", "Size", "Time in Ms", consts.WQF_BENCH + "_replaced")
-    # v.plot_scale_y(wqfdata, "QWUnionFind", "Size", "Time in Ms", "wqf/scaled_duration_per_size", 100)
-    # v.plot(wqfdata, "QWUnionFind", "Size", "Mean", "wqf/mean_per_size")
 
 def brute() -> None:
     brute = d.load_csv(consts.BRUTE_BENCH_CSV)
@@ -72,16 +69,6 @@ def ts_brute_vs_cache_vs_two_p() -> None:
     two_p = np.array([row for row in d.load_csv(consts.TWOP_BENCH_CSV) if row[0] < 3700])
     v.plot_multiple({"cache": cache, "cache_i": cache_i, "two_p": two_p}, "Brute vs TwoP vs Cache", "Size", "Mean in Ms", "comparison", True)
 
-
-def rs_cache_i() -> None:
-    rs_brute = d.load_data("threesum_rs/brute.csv")
-    v.plot_mean(rs_brute, "Rust Brute", "Size", "Mean in Ms", "cache_brute_rs")
-    rs_cache = d.load_data("threesum_rs/data.csv")
-    v.plot_mean(rs_cache, "Rust CacheI", "Size", "Mean in Ms", "cache_i_rs")
-    rs_cache = d.load_data("threesum_rs/data_200k.csv")
-    v.plot_mean(rs_cache, "Rust CacheI 200k", "Size", "Mean in Ms", "cache_i_rs_200k")
-    rs_cache = d.load_data("threesum_rs/data_50k_seed100.csv")
-    v.plot_mean(rs_cache, "Rust CacheI Seed 1000", "Size", "Mean in Ms", "cache_i_rs_s1000")
 
 def twoP() -> None:
     two_p = d.load_csv(consts.TWOP_BENCH_CSV)

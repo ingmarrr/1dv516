@@ -5,7 +5,7 @@ import os
 
 import consts
 
-SHOW = False
+SHOW = True
 
 def plot_multiple(
     data: dict[str, np.ndarray],
