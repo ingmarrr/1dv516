@@ -2,14 +2,11 @@ package benching;
 
 import logging.Logger;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
-
-import benching.Snapshot;
 
 public class Benchmark {
   private Logger log = Logger.builder()
@@ -31,7 +28,9 @@ public class Benchmark {
 
     for (int sz : sizes) {
       final T state = setup.apply(sz);
-
+      final Snapshot st = benchSize(state, func, sz, reps);
+      log.info("%d\t%s", sz, st);
+      sts.put(sz, st);
     }
   }
 
