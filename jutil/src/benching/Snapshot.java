@@ -2,7 +2,7 @@ package benching;
 
 public record Snapshot(
     long duration,
-    long mean,
+    long avg,
     long median,
     long min,
     long max,
@@ -12,15 +12,19 @@ public record Snapshot(
   public String toString() {
     return String.format(
         "%d; %d; %d; %d; %d; %d",
-        asMs(duration), asMs(mean), asMs(median), asMs(min), asMs(max), asMs(stdDev));
+        asMs(duration), asMs(avg), asMs(median), asMs(min), asMs(max), asMs(stdDev));
   }
 
   public String toFmt() {
     final String fmt = "%-20s";
     return String.format(
         "Duration: %s\nMean: %s\nMedian: %s\nMin: %s\nMax: %s\nStdDev: %s",
-        fmtNano(duration, fmt), fmtNano(mean, fmt), fmtNano(median, fmt), fmtNano(min, fmt), fmtNano(max, fmt),
+        fmtNano(duration, fmt), fmtNano(avg, fmt), fmtNano(median, fmt), fmtNano(min, fmt), fmtNano(max, fmt),
         fmtNano(stdDev));
+  }
+
+  public static String headers() {
+    return "duration; mean; median; min; max; stdDev";
   }
 
   public static Snapshot fromString(String str) {

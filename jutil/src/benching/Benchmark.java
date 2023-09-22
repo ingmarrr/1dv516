@@ -44,7 +44,12 @@ public class Benchmark {
       times.add(end - start);
     }
     final long duration = times.stream().mapToLong(Long::longValue).sum();
+    final long avg = duration / reps;
+    final long median = times.get(times.size() / 2);
+    final long min = times.stream().mapToLong(Long::longValue).min().getAsLong();
+    final long max = times.stream().mapToLong(Long::longValue).max().getAsLong();
+    final long stdDev = (long) Math.sqrt(times.stream().mapToDouble(t -> Math.pow(t - avg, 2)).sum() / reps);
 
-    return Snapshot.from(times);
+    return new Snapshot(duration, avg, median, min, max, stdDev);
   }
 }
