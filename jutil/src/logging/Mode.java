@@ -17,7 +17,7 @@ public enum Mode {
   public String toEmoji() {
     return switch (this) {
       case Main -> "🚀";
-      case Test -> "🧪";
+      case Test -> "🚥";
       case Bench -> "⏱️";
     };
   }

@@ -27,6 +27,13 @@ public class Logger {
     System.out.print(msg);
   }
 
+  public void println(Object... os) {
+    for (Object o : os) {
+      System.out.print(o);
+    }
+    System.out.println();
+  }
+
   public void println(String msg) {
     System.out.println(msg);
   }

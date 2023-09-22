@@ -1,10 +1,10 @@
+import testing.TestRunner
 
 plugins {
     application
 }
 
 repositories {
-    mavenCentral()
     mavenLocal()
 }
 
@@ -33,21 +33,27 @@ dependencies {
     implementation("com.github.ingmarrr:jutil:1.0.0")
 }
 
+buildscript {
+    repositories {
+        mavenLocal()
+    }
 
-tasks.register<JavaExec>("bench") {
-    group = "performance"
-    description = "Run benchmarks"
-    mainClass = "BenchRunner"
-    classpath = sourceSets["benchmarks"].runtimeClasspath
+    dependencies {
+        classpath("com.github.ingmarrr:jutil:1.0.0")
+    }
+}
+
+tasks.register<JavaExec>("runTests") {
+    group = "verification"
+    description = "Run tests"
+    mainClass.set("testing.TestRunner")
+    args = listOf("$buildDir/classes/java/test")
+    classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
 }
 
 tasks.test {
-    group = "correctness"
-    description = "Run tests"
-    classpath = sourceSets["tests"].runtimeClasspath
+    dependsOn(tasks["runTests"])
+    exclude("**/*")
 }
-
-
-
 
 

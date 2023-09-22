@@ -20,11 +20,11 @@ public enum Level {
 
   public String toEmoji() {
     return switch (this) {
-      case Debug -> "🐛";
-      case Info -> "ℹ️";
-      case Warn -> "⚠️";
+      case Debug -> "🐞";
+      case Info -> "💡";
+      case Warn -> "❗";
       case Success -> "✅";
-      case Error -> "🚨";
+      case Error -> "❌ ";
     };
   }
 }

@@ -12,11 +12,11 @@ public class LLTest {
       .mode(Mode.Test)
       .emoji(true)
       .build();
-
   @Unit
   public void testLL() throws Test.FailException {
     var ll = new DLList<Integer>();
     ll.addFirst(1);
-    Test.throwAssert("[1]", Objects.equals(ll.remFirst(), Optional.of(1)));
+    Test.throwAssert("[1]", Objects.equals(ll.remFirst(), Optional.of(2)));
+    log.info("Testing if this works");
   }
 }
