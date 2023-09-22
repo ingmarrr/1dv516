@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import static range.Range.range;
+
 public class Benchmark {
   private Logger log = Logger.builder()
       .mode(logging.Mode.Bench)
@@ -28,15 +30,13 @@ public class Benchmark {
 
     for (int sz : sizes) {
       final T state = setup.apply(sz);
-      final Snapshot st = benchSize(state, func, sz, reps);
-      log.info("%d\t%s", sz, st);
-      sts.put(sz, st);
+
     }
   }
 
   private <T> Snapshot benchSize(T state, Consumer<T> func, int size, int reps) {
     final List<Long> times = new ArrayList<Long>(reps);
-    for (int i = 0; i < reps; i++) {
+    for (int i : range(reps)) {
       final long start = System.nanoTime();
       func.accept(state);
       final long end = System.nanoTime();
@@ -44,11 +44,9 @@ public class Benchmark {
     }
     final long duration = times.stream().mapToLong(Long::longValue).sum();
     final long avg = duration / reps;
-    final long median = times.get(times.size() / 2);
-    final long min = times.stream().mapToLong(Long::longValue).min().getAsLong();
-    final long max = times.stream().mapToLong(Long::longValue).max().getAsLong();
-    final long stdDev = (long) Math.sqrt(times.stream().mapToDouble(t -> Math.pow(t - avg, 2)).sum() / reps);
-
-    return new Snapshot(duration, avg, median, min, max, stdDev);
+    final long min = times.stream().mapToLong(Long::longValue).min().orElse(0);
+    final long max = times.stream().mapToLong(Long::longValue).max().orElse(0);
+    final double stdDev = Math.sqrt(times.stream().mapToLong(Long::longValue).mapToDouble(v -> Math.pow(v - avg, 2)).sum());
+    return new Snapshot(duration, avg, min, max, (long) stdDev);
   }
 }

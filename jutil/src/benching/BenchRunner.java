@@ -1,15 +1,16 @@
-package testing;
+package benching;
 
 import java.lang.reflect.Method;
 
-public class Runner {
+public class BenchRunner {
+
   public static void run(Class<?> clazz) {
     for (Method met : clazz.getDeclaredMethods()) {
-      if (met.isAnnotationPresent(Unit.class)) {
+      if (met.isAnnotationPresent(Bench.class)) {
         try {
           met.invoke(null);
         } catch (Exception e) {
-          e.getMessage();
+          System.out.println(e.getMessage());
         }
       }
     }

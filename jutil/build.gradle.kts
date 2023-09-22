@@ -1,10 +1,27 @@
 
 plugins {
     `java-library`
+    id("maven-publish")
 }
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            groupId = "com.github.ingmarrr"
+            artifactId = "jutil"
+            version = "1.0.0"
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
 }
 
 sourceSets {
@@ -23,9 +40,3 @@ sourceSets {
     }
 }
 
-
-// java {
-//     toolchain {
-//         languageVersion.set(JavaLanguageVersion.of(21))
-//     }
-// }

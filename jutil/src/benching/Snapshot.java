@@ -2,8 +2,7 @@ package benching;
 
 public record Snapshot(
     long duration,
-    long avg,
-    long median,
+    long mean,
     long min,
     long max,
     long stdDev) {
@@ -11,20 +10,20 @@ public record Snapshot(
   @Override
   public String toString() {
     return String.format(
-        "%d; %d; %d; %d; %d; %d",
-        asMs(duration), asMs(avg), asMs(median), asMs(min), asMs(max), asMs(stdDev));
+        "%f; %f; %f; %f; %f",
+        asMs(duration), asMs(mean), asMs(min), asMs(max), asMs(stdDev));
   }
 
   public String toFmt() {
     final String fmt = "%-20s";
     return String.format(
-        "Duration: %s\nMean: %s\nMedian: %s\nMin: %s\nMax: %s\nStdDev: %s",
-        fmtNano(duration, fmt), fmtNano(avg, fmt), fmtNano(median, fmt), fmtNano(min, fmt), fmtNano(max, fmt),
+        "Duration: %s\nMean: %s\nMin: %s\nMax: %s\nStdDev: %s",
+        fmtNano(duration, fmt), fmtNano(mean, fmt), fmtNano(min, fmt), fmtNano(max, fmt),
         fmtNano(stdDev));
   }
 
   public static String headers() {
-    return "duration; mean; median; min; max; stdDev";
+    return "Duration; Mean; Median; Min; Max; StdDev";
   }
 
   public static Snapshot fromString(String str) {
@@ -34,8 +33,7 @@ public record Snapshot(
         Long.parseLong(parts[1]),
         Long.parseLong(parts[2]),
         Long.parseLong(parts[3]),
-        Long.parseLong(parts[4]),
-        Long.parseLong(parts[5]));
+        Long.parseLong(parts[4]));
   }
 
   public static String fmtNano(long nano) {
