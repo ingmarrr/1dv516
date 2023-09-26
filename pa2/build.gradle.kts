@@ -19,7 +19,7 @@ sourceSets {
     }  
     test {
         java {
-            setSrcDirs(listOf("tests"))
+            setSrcDirs(listOf("src/test"))
         }
     }
     create("benchmarks") {
@@ -47,8 +47,9 @@ tasks.register<JavaExec>("runTests") {
     group = "verification"
     description = "Run tests"
     mainClass.set("testing.TestRunner")
-    args = listOf("$buildDir/classes/java/test")
+    args = listOf("$buildDir/classes/java/test/")
     classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
+    standardOutput = System.out
 }
 
 tasks.test {

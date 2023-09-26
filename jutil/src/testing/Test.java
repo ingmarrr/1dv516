@@ -48,8 +48,7 @@ public class Test {
   private static void print(String msg, Result result) {
     switch (result) {
       case Pass -> log.success("%s - %s", msg, result.toEmoji());
-      case Fail -> log.error("%s - %s", msg, result.toEmoji());
-      case Error -> log.error("%s - %s", msg, result.toEmoji());
+      case Fail, Error -> log.error("%s - %s", msg, result.toEmoji());
     }
   }
 

@@ -30,7 +30,7 @@ public class BenchRunner {
     } catch (Exception e) {
       var parts = e.getMessage().split("\\.");
       if (parts.length > 0) {
-        fails.add(parts[parts.length - 1]);
+        log.error("Benchmark `" + parts[parts.length - 1] + "` failed with: " + e.getMessage());
       } else {
         log.error(e.getMessage());
       }

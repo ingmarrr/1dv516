@@ -1,8 +1,11 @@
 package linkedlist;
 
+import java.lang.annotation.Native;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public class DLList<T> {
+public class DLList<T> implements Iterable<T> {
 
   private Optional<LLNode<T>> root;
   private Optional<LLNode<T>> end;
@@ -20,10 +23,7 @@ public class DLList<T> {
 
   public void addFirst(T val) {
     final LLNode<T> node = new LLNode<>(val);
-    size++;
-    if (root.isEmpty()) {
-      root = Optional.of(node);
-      end = Optional.of(node);
+    if (emptyInit(node)) {
       return;
     }
     final LLNode<T> oldRoot = root.get();
@@ -34,10 +34,7 @@ public class DLList<T> {
 
   public void addLast(T val) {
     final LLNode<T> node = new LLNode<>(val);
-    size++;
-    if (end.isEmpty()) {
-      root = Optional.of(node);
-      end = Optional.of(node);
+    if (emptyInit(node)) {
       return;
     }
 
@@ -45,6 +42,16 @@ public class DLList<T> {
     oldEnd.next = Optional.of(node);
     node.prev = Optional.of(oldEnd);
     end = Optional.of(node);
+  }
+
+  private boolean emptyInit(LLNode<T> node) {
+    size++;
+    if (root.isEmpty()) {
+      root = Optional.of(node);
+      end = Optional.of(node);
+      return true;
+    }
+    return false;
   }
 
   public Optional<T> remFirst() {
@@ -83,5 +90,31 @@ public class DLList<T> {
     end = Optional.of(prev);
     size--;
     return Optional.of(tmpEnd.getVal());
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return new DLLIterator();
+  }
+
+  private class DLLIterator implements Iterator<T> {
+
+    private Optional<LLNode<T>> cur = root;
+
+    @Override
+    public boolean hasNext() {
+      return cur.map(dllNode -> dllNode.next.isPresent()).orElse(false);
+    }
+
+    @Override
+    public T next() throws NoSuchElementException {
+      if (cur.isEmpty()) {
+        throw new NoSuchElementException();
+      }
+      LLNode<T> curNode = cur.get();
+      T data = curNode.getVal();
+      cur = curNode.next;
+      return data;
+    }
   }
 }
