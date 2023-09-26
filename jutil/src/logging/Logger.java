@@ -6,6 +6,7 @@ public class Logger {
   final Mode mode;
   final Optional<String> dir;
   final boolean emoji;
+  final boolean modeEmoji;
 
   public enum Result {
     Ok,
@@ -17,10 +18,11 @@ public class Logger {
     return new LoggerBuilder();
   }
 
-  public Logger(Mode mode, Optional<String> dir, boolean emoji) {
+  public Logger(Mode mode, Optional<String> dir, boolean emoji, boolean modeEmoji) {
     this.mode = mode;
     this.dir = dir;
     this.emoji = emoji;
+    this.modeEmoji = modeEmoji;
   }
 
   public void print(String msg) {
@@ -46,7 +48,7 @@ public class Logger {
     final java.io.File dir = new java.io.File(this.dir.get());
     if (!dir.exists()) {
       try {
-        Boolean res = dir.mkdirs();
+        boolean res = dir.mkdirs();
         if (!res) {
           return Result.Err;
         }
@@ -81,20 +83,37 @@ public class Logger {
 
   private void log(Level level, String msg) {
     if (this.emoji) {
-      System.out.printf("[%s/%s] %s\n", this.mode.toEmoji(), level.toEmoji(), msg);
+      if (this.modeEmoji) {
+        System.out.printf("[%s/%s] %s\n", this.mode.toEmoji(), level.toEmoji(), msg);
+      } else {
+        System.out.printf("[%s/%s] %s\n", this.mode.toString(), level.toEmoji(), msg);
+      }
     } else {
-      System.out.printf("[%s/%s] %s\n", this.mode.toString(), level.toString(), msg);
+      if (this.modeEmoji) {
+        System.out.printf("[%s/%s] %s\n", this.mode.toEmoji(), level.toString(), msg);
+      } else {
+        System.out.printf("[%s/%s] %s\n", this.mode.toString(), level.toString(), msg);
+      }
     }
+
   }
 
   private void log(Level level, Object... args) {
     if (this.emoji) {
-      System.out.printf("[%s/%s] ", this.mode.toEmoji(), level.toEmoji());
+      if (this.modeEmoji) {
+        System.out.printf("[%s/%s] ", this.mode.toEmoji(), level.toEmoji());
+      } else {
+        System.out.printf("[%s/%s] ", this.mode.toString(), level.toEmoji());
+      }
     } else {
-      System.out.printf("[%s/%s] ", this.mode.toString(), level.toString());
+      if (this.modeEmoji) {
+        System.out.printf("[%s/%s] ", this.mode.toEmoji(), level.toString());
+      } else {
+        System.out.printf("[%s/%s] ", this.mode.toString(), level.toString());
+      }
     }
     for (Object arg : args) {
-      System.out.print(" :: " + arg);
+      System.out.printf(" " + arg);
     }
     System.out.println();
   }

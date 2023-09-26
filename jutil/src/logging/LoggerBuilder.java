@@ -6,11 +6,13 @@ public class LoggerBuilder {
   Optional<Mode> mode;
   Optional<String> path;
   Optional<Boolean> emoji;
+  Optional<Boolean> modeEmoji;
 
   public LoggerBuilder() {
     this.mode = Optional.empty();
     this.path = Optional.empty();
     this.emoji = Optional.empty();
+    this.modeEmoji = Optional.empty();
   }
 
   public LoggerBuilder mode(Mode mode) {
@@ -28,10 +30,16 @@ public class LoggerBuilder {
     return this;
   }
 
+  public LoggerBuilder modeEmoji(boolean emoji) {
+    this.modeEmoji = Optional.of(emoji);
+    return this;
+  }
+
   public Logger build() {
     return new Logger(
         this.mode.orElse(Mode.Main),
         this.path,
-        this.emoji.orElse(false));
+        this.emoji.orElse(false),
+        this.modeEmoji.orElse(false));
   }
 }

@@ -7,6 +7,7 @@ public class Test {
   private static final Logger log = Logger.builder()
       .mode(logging.Mode.Test)
       .emoji(true)
+      .modeEmoji(false)
       .build();
 
   public record Case(String msg, boolean left, boolean right) {
@@ -25,7 +26,7 @@ public class Test {
     throw new FailException(msg);
   }
 
-  private enum Result {
+  public enum Result {
     Pass, Fail, Error;
 
     public String toString() {
@@ -45,16 +46,17 @@ public class Test {
     }
   }
 
-  private static void print(String msg, Result result) {
+  public static void print(String msg, Result result) {
     switch (result) {
-      case Pass -> log.success("%s - %s", msg, result.toEmoji());
-      case Fail, Error -> log.error("%s - %s", msg, result.toEmoji());
+      case Pass -> log.success(String.format("%s - %s  ", msg, result.toEmoji()));
+      case Fail, Error -> log.error(String.format("%s - %s  ", msg, result.toEmoji()));
     }
   }
 
   // Throwing
   public static void throwAssert(String msg, boolean left) throws FailException {
-    if (left) {
+    if (!left) {
+      print(msg, Result.Fail);
       throwFail("Fail: " + msg);
     }
     print(msg, Result.Pass);
@@ -62,6 +64,7 @@ public class Test {
 
   public static void throwAssert(String msg, boolean left, boolean right) throws FailException {
     if (left != right) {
+      print(msg, Result.Fail);
       throwFail("Fail: " + msg);
     }
     print(msg, Result.Pass);
@@ -71,6 +74,7 @@ public class Test {
     log.info(msg);
     for (Case c : cases) {
       if (c.left != c.right) {
+        print(c.msg, Result.Fail);
         throwFail("Fail: " + c.msg);
       }
       print(c.msg, Result.Pass);
@@ -80,6 +84,7 @@ public class Test {
   public static void throwAssert(Case[] cases) throws FailException {
     for (Case c : cases) {
       if (c.left != c.right) {
+        print(c.msg, Result.Fail);
         throwFail("Fail: " + c.msg);
       }
       print(c.msg, Result.Pass);
@@ -89,6 +94,7 @@ public class Test {
   public static <T extends Comparable<T>> void throwAssert(String msg, T left, T right)
       throws FailException {
     if (left.compareTo(right) != 0) {
+      print(msg, Result.Fail);
       throwFail("Fail: " + msg);
     }
     print(msg, Result.Pass);

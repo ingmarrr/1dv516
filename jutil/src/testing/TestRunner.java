@@ -2,11 +2,10 @@ package testing;
 
 import logging.Logger;
 import logging.Mode;
+import logging.Result;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Executable;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -18,15 +17,15 @@ public class TestRunner {
 
   private static final Logger log = Logger.builder()
       .mode(Mode.Test)
-      .emoji(false)
+      .emoji(true)
+      .modeEmoji(false)
       .build();
 
   private static File root;
 
   public static void main(String[] args) {
     log.info("Running Tests...");
-    File dir = new File(args[0]);
-    root = dir;
+    root = new File(args[0]);
     final List<String> fails = new ArrayList<>();
     try {
       List<Class<?>> classes = getClasses("");
@@ -88,20 +87,30 @@ public class TestRunner {
   public static void run(Class<?> clazz) {
     try {
       var instance = clazz.getDeclaredConstructor().newInstance();
+      var successes = new ArrayList<>();
+      var fails = new ArrayList<>();
       for (Method met : clazz.getDeclaredMethods()) {
         if (met.isAnnotationPresent(Unit.class)) {
           try {
             if (Modifier.isStatic(met.getModifiers())) {
                 met.invoke(null);
-              return;
+                return;
             }
             met.invoke(instance);
+            successes.add("Test `" + met.getName() + "` passed.");
+//            log.success("Test `" + met.getName() + "` passed.");
           } catch (Exception e) {
-            log.error("Test `" + met.getName() + "` failed.");
-          } finally {
-            log.success("Test `" + met.getName() + "` passed.");
+            fails.add("Test `" + met.getName() + "` failed.");
+//            log.error("Test `" + met.getName() + "` failed.");
           }
         }
+      }
+      log.println();
+      for (var res : successes) {
+        log.success(res);
+      }
+      for (var fail : fails) {
+        log.error(fail);
       }
 
     } catch (Exception e) {

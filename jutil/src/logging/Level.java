@@ -23,7 +23,7 @@ public enum Level {
       case Debug -> "🐞";
       case Info -> "💡";
       case Warn -> "❗";
-      case Success -> "✅";
+      case Success -> "✅ ";
       case Error -> "❌ ";
     };
   }
