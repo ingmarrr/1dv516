@@ -1,17 +1,16 @@
 package linkedlist;
 
-import java.lang.annotation.Native;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public class DLList<T> implements Iterable<T> {
+public class Deque<T> implements Iterable<T> {
 
   private Optional<LLNode<T>> root;
   private Optional<LLNode<T>> end;
   private int size;
 
-  public DLList() {
+  public Deque() {
     root = Optional.empty();
     end = Optional.empty();
     size = 0;
@@ -98,7 +97,6 @@ public class DLList<T> implements Iterable<T> {
   }
 
   private class DLLIterator implements Iterator<T> {
-
     private Optional<LLNode<T>> cur = root;
 
     @Override
