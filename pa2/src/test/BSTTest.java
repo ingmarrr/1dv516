@@ -1,4 +1,4 @@
-import core.BST;
+import core.BSTree;
 import logging.Logger;
 import logging.Mode;
 import testing.Test;
@@ -14,16 +14,16 @@ public class BSTTest {
       .emoji(true)
       .build();
 
+
   @Unit
   public void testContains() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
     var is = new int[] { 1, 2, 3};
     for (int i : is) {
       bst.add(i);
     }
 
     var in = bst.toInOrder();
-    log.info(in);
     Test.throwAssertQuiet("Contains 1", bst.contains(1));
     Test.throwAssertQuiet("Contains 2", bst.contains(2));
 //    Test.throwAssertQuiet("Contains 3", bst.contains(3));
@@ -31,7 +31,7 @@ public class BSTTest {
 
   @Unit
   public void testRemove() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
     var is = new int[] { 1, 2, 3};
     for (int i : is) {
       bst.add(i);
@@ -54,21 +54,21 @@ public class BSTTest {
 
   @Unit
   public void testHeight() throws Test.FailException {
-    BST<Integer> bst = new BST<>();
+    BSTree<Integer> bst = new BSTree<>();
     var is = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     for (int i : is) {
       bst.add(i);
     }
 //    log.info(bst.height());
     Test.throwAssertQuiet("Height == 10", bst.height() == 9);
-    bst = new BST<>();
+    bst = new BSTree<>();
     is = new int[] { 5, 3, 8, 2, 1, 4, 9, 10, 7, 6};
     for (int i : is) {
       bst.add(i);
     }
 //    log.info(bst.height());
     Test.throwAssertQuiet("Height == 4", bst.height() == 3);
-    bst = new BST<>();
+    bst = new BSTree<>();
     is = new int[] { 2, 3, 1};
     for (int i : is) {
       bst.add(i);
@@ -79,7 +79,7 @@ public class BSTTest {
 
   @Unit
   public void testKth() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
     var is = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     for (int i : is) {
       bst.add(i);
@@ -87,14 +87,13 @@ public class BSTTest {
     Test.throwAssertQuiet("Size == 10", bst.size() == 10);
     var kth = bst.kth(3);
     Test.throwAssertQuiet("Size == 9", bst.size() == 9);
-//    log.info(bst.toInOrder());
     Test.throwAssertQuiet("Is Optional.of", kth.isPresent());
     Test.throwAssertQuiet("kth == 8", kth.get() == 8);
   }
 
   @Unit
   public void testBSTInorderList() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
 
     bst.add(4);
     bst.add(2);
@@ -109,7 +108,7 @@ public class BSTTest {
 
   @Unit
   public void testBSTInorderIterator() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
 
     bst.add(6);
     bst.add(2);
@@ -122,7 +121,7 @@ public class BSTTest {
 
   @Unit
   public void testBSTPreorderList() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
 
     bst.add(4);
     bst.add(2);
@@ -137,7 +136,7 @@ public class BSTTest {
 
   @Unit
   public void testBSTPreorderIterator() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
     int[] ints = {5, 3, 8, 2, 4, 7, 9, 1, 6, 10};
     for (int i : ints) {
       bst.add(i);
@@ -154,7 +153,7 @@ public class BSTTest {
 
   @Unit
   public void testBSTPostorderList() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
 
     bst.add(4);
     bst.add(2);
@@ -169,7 +168,7 @@ public class BSTTest {
 
   @Unit
   public void testBSTPostorderIterator() throws Test.FailException {
-    final BST<Integer> bst = new BST<>();
+    final BSTree<Integer> bst = new BSTree<>();
 
     bst.add(5);
     bst.add(2);

@@ -6,11 +6,11 @@ import java.util.function.Supplier;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
-public class BST<E extends Comparable<E>> implements Iterable<E> {
-  private Optional<BSTNode<E>> root;
+public class BSTree<E extends Comparable<E>> implements Iterable<E> {
+  private Optional<BTNode<E>> root;
   private int size;
 
-  public BST() {
+  public BSTree() {
     root = empty();
   }
 
@@ -22,7 +22,7 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     return height(0, root) - 1;
   }
 
-  private int height(int max, Optional<BSTNode<E>> node) {
+  private int height(int max, Optional<BTNode<E>> node) {
     if (node.isEmpty()) return 0;
 
     var hleft = height(0, node.get().left);
@@ -35,9 +35,9 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     remove(val, root);
   }
 
-  private void remove(E val, Optional<BSTNode<E>> node) {
+  private void remove(E val, Optional<BTNode<E>> node) {
     if (node.isEmpty()) return;
-    final BSTNode<E> no = node.get();
+    final BTNode<E> no = node.get();
     switch (Integer.signum(no.getVal().compareTo(val))) {
       case -1 -> no.right.ifPresent(right -> {
           if (right.getVal().equals(val)) {
@@ -62,10 +62,9 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     return contains(val, root);
   }
 
-  private boolean contains(E val, Optional<BSTNode<E>> node) {
+  private boolean contains(E val, Optional<BTNode<E>> node) {
     if (node.isEmpty()) return false;
-    final BSTNode<E> no = node.get();
-    System.out.println(Integer.signum(no.getVal().compareTo(val)));
+    final BTNode<E> no = node.get();
     return switch (Integer.signum(no.getVal().compareTo(val))) {
       case 1 -> contains(val, no.left);
       case -1 -> contains(val, no.right);
@@ -73,21 +72,41 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     };
   }
 
+
   public void add(E val) {
     size++;
     if (root.isEmpty()) {
-      root = of(new BSTNode<>(val));
+      root = of(new BTNode<>(val));
     } else {
-      root.get().add(val);
+      addE(val, root.get());
     }
+  }
+
+  private void addE(E val, BTNode<E> node) {
+    switch (Integer.signum(node.getVal().compareTo(val))) {
+      case 1 -> {
+        if (node.left.isEmpty()) {
+          node.left = of(new BTNode<>(val));
+        } else {
+          addE(val, node.left.get());
+        }
+      }
+      case -1 -> {
+        if (node.right.isEmpty()) {
+          node.right = of(new BTNode<>(val));
+        } else {
+          addE(val, node.right.get());
+        }
+      }
+    };
   }
 
   public Optional<E> kth(int k) {
     if (k >= size || k < 1) return empty();
     int cnt = 1;
-    Optional<BSTNode<E>> bigger = empty();
+    Optional<BTNode<E>> bigger = empty();
     Optional<E> out = empty();
-    for (Iterator<BSTNode<E>> it = new PostOrderBSTNodeIterator(); it.hasNext();) {
+    for (Iterator<BTNode<E>> it = new PostOrderBSTNodeIterator(); it.hasNext();) {
       var i = it.next();
       if (cnt == k - 1) {
         bigger = of(i);
@@ -111,7 +130,7 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     return inOrder;
   }
 
-  private void toInOrder(List<E> acc, Optional<BSTNode<E>> node) {
+  private void toInOrder(List<E> acc, Optional<BTNode<E>> node) {
     if (node.isPresent()) {
       toInOrder(acc, node.get().left);
       acc.add(node.get().getVal());
@@ -125,7 +144,7 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     return inOrder;
   }
 
-  private void toPreOrder(List<E> acc, Optional<BSTNode<E>> node) {
+  private void toPreOrder(List<E> acc, Optional<BTNode<E>> node) {
     if (node.isPresent()) {
       acc.add(node.get().getVal());
       toPreOrder(acc, node.get().left);
@@ -139,7 +158,7 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     return inOrder;
   }
 
-  private void toPostOrder(List<E> acc, Optional<BSTNode<E>> node) {
+  private void toPostOrder(List<E> acc, Optional<BTNode<E>> node) {
     if (node.isPresent()) {
       toPostOrder(acc, node.get().left);
       toPostOrder(acc, node.get().right);
@@ -172,9 +191,9 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
   }
 
   private final class BSTInOrderIterator implements Iterator<E> {
-    final Stack<BSTNode<E>> toHandle = new Stack<>();
+    final Stack<BTNode<E>> toHandle = new Stack<>();
     boolean didPop = false;
-    Optional<BSTNode<E>> cur = root;
+    Optional<BTNode<E>> cur = root;
 
     @Override
     public boolean hasNext() {
@@ -211,9 +230,9 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     }
   }
   private final class BSTPreOrderIterator implements Iterator<E> {
-    final Stack<BSTNode<E>> toHandle = new Stack<>();
+    final Stack<BTNode<E>> toHandle = new Stack<>();
     boolean shouldPop = false;
-    Optional<BSTNode<E>> cur = root;
+    Optional<BTNode<E>> cur = root;
 
     @Override
     public boolean hasNext() {
@@ -235,9 +254,9 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     }
   }
   private final class BSTPostOrderIterator implements Iterator<E> {
-    final Stack<BSTNode<E>> toHandle = new Stack<>();
+    final Stack<BTNode<E>> toHandle = new Stack<>();
     boolean didPop = false;
-    Optional<BSTNode<E>> cur = root;
+    Optional<BTNode<E>> cur = root;
 
     @Override
     public boolean hasNext() {
@@ -277,10 +296,10 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     }
   }
 
-  private final class PostOrderBSTNodeIterator implements Iterator<BSTNode<E>> {
-    final Stack<BSTNode<E>> toHandle = new Stack<>();
+  private final class PostOrderBSTNodeIterator implements Iterator<BTNode<E>> {
+    final Stack<BTNode<E>> toHandle = new Stack<>();
     boolean didPop = false;
-    Optional<BSTNode<E>> cur = root;
+    Optional<BTNode<E>> cur = root;
 
     @Override
     public boolean hasNext() {
@@ -288,7 +307,7 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     }
 
     @Override
-    public BSTNode<E> next() {
+    public BTNode<E> next() {
       if (didPop) {
         var node = cur.get();
         if (node.left.isEmpty()) {
