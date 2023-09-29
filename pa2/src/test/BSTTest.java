@@ -5,6 +5,7 @@ import testing.Test;
 import testing.Unit;
 
 import java.util.Arrays;
+import static range.Range.range;
 
 public class BSTTest {
 
@@ -12,6 +13,44 @@ public class BSTTest {
       .mode(Mode.Test)
       .emoji(true)
       .build();
+
+  @Unit
+  public void testContains() throws Test.FailException {
+    final BST<Integer> bst = new BST<>();
+    var is = new int[] { 1, 2, 3};
+    for (int i : is) {
+      bst.add(i);
+    }
+
+    var in = bst.toInOrder();
+    log.info(in);
+    Test.throwAssertQuiet("Contains 1", bst.contains(1));
+    Test.throwAssertQuiet("Contains 2", bst.contains(2));
+//    Test.throwAssertQuiet("Contains 3", bst.contains(3));
+  }
+
+  @Unit
+  public void testRemove() throws Test.FailException {
+    final BST<Integer> bst = new BST<>();
+    var is = new int[] { 1, 2, 3};
+    for (int i : is) {
+      bst.add(i);
+    }
+    var in = bst.toInOrder();
+//    log.info(in);
+    for (int i : range(3)) {
+      Test.throwAssertQuiet(is[i] + " == " + in.get(i), is[i] == in.get(i));
+    }
+    Test.throwAssertQuiet("Size == 3", bst.size() == 3);
+    bst.remove(2);
+    in = bst.toInOrder();
+    is = new int[] { 1, 3};
+//    log.info(in);
+    for (int i : range(2)) {
+      Test.throwAssertQuiet(is[i] + " == " + in.get(i), is[i] == in.get(i));
+    }
+    Test.throwAssertQuiet("Size == 2", bst.size() == 2);
+  }
 
   @Unit
   public void testHeight() throws Test.FailException {

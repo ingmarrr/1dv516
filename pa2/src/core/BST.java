@@ -31,6 +31,48 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     return 1 + max + Math.max(hleft, hright);
   }
 
+  public void remove(E val) {
+    remove(val, root);
+  }
+
+  private void remove(E val, Optional<BSTNode<E>> node) {
+    if (node.isEmpty()) return;
+    final BSTNode<E> no = node.get();
+    switch (Integer.signum(no.getVal().compareTo(val))) {
+      case -1 -> no.right.ifPresent(right -> {
+          if (right.getVal().equals(val)) {
+            no.right = right.right.isPresent() ? right.right : right.left;
+          } else {
+            remove(val, no.right);
+          }
+      });
+      case 1 -> no.left.ifPresent(left -> {
+          if (left.getVal().equals(val)) {
+            no.left = left.right.isPresent() ? left.right : left.left;
+          } else {
+            remove(val, no.left);
+          }
+      });
+      case 0 -> node = no.right.or(() -> no.left);
+    }
+    size--;
+  }
+
+  public boolean contains(E val) {
+    return contains(val, root);
+  }
+
+  private boolean contains(E val, Optional<BSTNode<E>> node) {
+    if (node.isEmpty()) return false;
+    final BSTNode<E> no = node.get();
+    System.out.println(Integer.signum(no.getVal().compareTo(val)));
+    return switch (Integer.signum(no.getVal().compareTo(val))) {
+      case 1 -> contains(val, no.left);
+      case -1 -> contains(val, no.right);
+      default -> true;
+    };
+  }
+
   public void add(E val) {
     size++;
     if (root.isEmpty()) {
