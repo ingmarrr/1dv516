@@ -62,6 +62,18 @@ public class Test {
     print(msg, Result.Pass);
   }
 
+  public static void throwAssertQuiet(String msg, boolean left, boolean right) throws FailException {
+    if (left != right) {
+      throwFail("Fail: " + msg);
+    }
+  }
+
+  public static void throwAssertQuiet(String msg, boolean left) throws FailException {
+    if (!left) {
+      throwFail("Fail: " + msg);
+    }
+  }
+
   public static void throwAssert(String msg, boolean left, boolean right) throws FailException {
     if (left != right) {
       print(msg, Result.Fail);

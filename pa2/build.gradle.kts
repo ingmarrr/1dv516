@@ -4,6 +4,10 @@ plugins {
     application
 }
 
+application {
+    mainClass.set("main.FTree")
+}
+
 repositories {
     mavenLocal()
 }
@@ -56,5 +60,7 @@ tasks.test {
     dependsOn(tasks["runTests"])
     exclude("**/*")
 }
+
+
 
 

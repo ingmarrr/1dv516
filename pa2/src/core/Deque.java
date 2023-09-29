@@ -1,8 +1,11 @@
-package linkedlist;
+package core;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 
 public class Deque<T> implements Iterable<T> {
 
@@ -11,8 +14,8 @@ public class Deque<T> implements Iterable<T> {
   private int size;
 
   public Deque() {
-    root = Optional.empty();
-    end = Optional.empty();
+    root = empty();
+    end = empty();
     size = 0;
   }
 
@@ -26,9 +29,9 @@ public class Deque<T> implements Iterable<T> {
       return;
     }
     final LLNode<T> oldRoot = root.get();
-    oldRoot.prev = Optional.of(node);
-    node.next = Optional.of(oldRoot);
-    root = Optional.of(node);
+    oldRoot.prev = of(node);
+    node.next = of(oldRoot);
+    root = of(node);
   }
 
   public void addLast(T val) {
@@ -38,16 +41,16 @@ public class Deque<T> implements Iterable<T> {
     }
 
     final LLNode<T> oldEnd = end.get();
-    oldEnd.next = Optional.of(node);
-    node.prev = Optional.of(oldEnd);
-    end = Optional.of(node);
+    oldEnd.next = of(node);
+    node.prev = of(oldEnd);
+    end = of(node);
   }
 
   private boolean emptyInit(LLNode<T> node) {
     size++;
     if (root.isEmpty()) {
-      root = Optional.of(node);
-      end = Optional.of(node);
+      root = of(node);
+      end = of(node);
       return true;
     }
     return false;
@@ -55,40 +58,40 @@ public class Deque<T> implements Iterable<T> {
 
   public Optional<T> remFirst() {
     if (root.isEmpty()) {
-      return Optional.empty();
+      return empty();
     }
 
     final LLNode<T> tmpRoot = root.get();
     if (tmpRoot.next.isEmpty()) {
-      root = Optional.empty();
-      end = Optional.empty();
-      return Optional.of(tmpRoot.getVal());
+      root = empty();
+      end = empty();
+      return of(tmpRoot.getVal());
     }
 
     final LLNode<T> next = tmpRoot.next.get();
-    next.prev = Optional.empty();
-    root = Optional.of(next);
+    next.prev = empty();
+    root = of(next);
     size--;
-    return Optional.of(tmpRoot.getVal());
+    return of(tmpRoot.getVal());
   }
 
   public Optional<T> remLast() {
     if (end.isEmpty()) {
-      return Optional.empty();
+      return empty();
     }
 
     final LLNode<T> tmpEnd = end.get();
     if (tmpEnd.prev.isEmpty()) {
-      root = Optional.empty();
-      end = Optional.empty();
-      return Optional.of(tmpEnd.getVal());
+      root = empty();
+      end = empty();
+      return of(tmpEnd.getVal());
     }
 
     final LLNode<T> prev = tmpEnd.prev.get();
-    prev.next = Optional.empty();
-    end = Optional.of(prev);
+    prev.next = empty();
+    end = of(prev);
     size--;
-    return Optional.of(tmpEnd.getVal());
+    return of(tmpEnd.getVal());
   }
 
   @Override

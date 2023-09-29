@@ -1,6 +1,8 @@
-package linkedlist;
+package core;
 
 import java.util.Optional;
+
+import static java.util.Optional.empty;
 
 public class LLNode<T> {
 
@@ -10,8 +12,8 @@ public class LLNode<T> {
 
   public LLNode(T value) {
     val = value;
-    next = Optional.empty();
-    prev = Optional.empty();
+    next = empty();
+    prev = empty();
   }
 
   public T getVal() {
