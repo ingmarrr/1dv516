@@ -28,16 +28,26 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
   }
 
   public Optional<E> kth(int k) {
-    var cnt = 1;
-    var iter = postOrder();
-    for (Iterator<E> it = iter; it.hasNext();) {
+    if (k >= size || k < 1) return empty();
+    int cnt = 1;
+    Optional<BSTNode<E>> bigger = empty();
+    Optional<E> out = empty();
+    for (Iterator<BSTNode<E>> it = new PostOrderBSTNodeIterator(); it.hasNext();) {
       var i = it.next();
+      if (cnt == k - 1) {
+        bigger = of(i);
+      }
       if (cnt == k) {
-        return of(i);
+        out = of(i.getVal());
+      }
+      if (cnt == k + 1) {
+        size--;
+        i.right = bigger;
+        break;
       }
       cnt++;
     }
-    return empty();
+    return out;
   }
 
   public List<E> toInOrder() {
@@ -167,23 +177,6 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
         }
         cur = check(() -> toHandle.pop());
         return out;
-
-//      if (shouldPop) {
-//        cur = of(toHandle.pop());
-//      }
-//      var node = cur.get();
-//      var out = node.getVal();
-//      if (node.right.isPresent()) {
-//        toHandle.push(node.right.get());
-//      }
-//      if (node.left.isPresent()) {
-//        toHandle.push(node.left.get());
-//      }
-//      shouldPop = true;
-//      if (toHandle.size() == 0) {
-//        cur = empty();
-//      }
-//      return out;
     }
   }
   private final class BSTPostOrderIterator implements Iterator<E> {
@@ -226,6 +219,49 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
       }
       cur = node.left;
       return node.getVal();
+    }
+  }
+
+  private final class PostOrderBSTNodeIterator implements Iterator<BSTNode<E>> {
+    final Stack<BSTNode<E>> toHandle = new Stack<>();
+    boolean didPop = false;
+    Optional<BSTNode<E>> cur = root;
+
+    @Override
+    public boolean hasNext() {
+      return cur.isPresent();
+    }
+
+    @Override
+    public BSTNode<E> next() {
+      if (didPop) {
+        var node = cur.get();
+        if (node.left.isEmpty()) {
+          cur = check(() -> toHandle.pop());
+          return node;
+        }
+        cur = node.left;
+        didPop = false;
+        return node;
+      }
+
+      while (cur.get().right.isPresent()) {
+        toHandle.push(cur.get());
+        cur = cur.get().right;
+      }
+
+      if (cur.get().left.isPresent()) {
+        var node = cur.get();
+      }
+
+      var node = cur.get();
+      if (node.left.isEmpty()) {
+        cur = check(() -> toHandle.pop());
+        didPop = true;
+        return node;
+      }
+      cur = node.left;
+      return node;
     }
   }
 

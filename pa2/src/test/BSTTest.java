@@ -21,8 +21,9 @@ public class BSTTest {
     for (int i : is) {
       bst.add(i);
     }
+    Test.throwAssertQuiet("Size == 10", bst.getSize() == 10);
     var kth = bst.kth(3);
-//    log.info(kth.get());
+    Test.throwAssertQuiet("Size == 9", bst.getSize() == 9);
     Test.throwAssertQuiet("Is Optional.of", kth.isPresent());
     Test.throwAssertQuiet("kth == 8", kth.get() == 8);
   }
