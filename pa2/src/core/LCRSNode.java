@@ -5,7 +5,7 @@ import java.util.Optional;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
-public class LCRSNode<E> {
+public class LCRSNode<E extends Comparable<E>> {
   private final E val;
   private Optional<LCRSNode<E>> left;
   private Optional<LCRSNode<E>> right;
@@ -36,7 +36,6 @@ public class LCRSNode<E> {
     return deg;
   }
 
-
   public LCRSNode<E> add(E val) {
     if (left.isEmpty()) {
       final LCRSNode<E> newLeft = new LCRSNode<>(val);
@@ -54,9 +53,6 @@ public class LCRSNode<E> {
     }
   }
 
-  public boolean isLeaf() {
-    return left.isEmpty();
-  }
 
   public int size() {
     return 1 + left.map(LCRSNode::size).orElse(0) + right.map(LCRSNode::size).orElse(0);

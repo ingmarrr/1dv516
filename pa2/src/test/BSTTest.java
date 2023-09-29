@@ -15,6 +15,19 @@ public class BSTTest {
       .build();
 
   @Unit
+  public void testKth() throws Test.FailException {
+    final BST<Integer> bst = new BST<>();
+    var is = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    for (int i : is) {
+      bst.add(i);
+    }
+    var kth = bst.kth(3);
+//    log.info(kth.get());
+    Test.throwAssertQuiet("Is Optional.of", kth.isPresent());
+    Test.throwAssertQuiet("kth == 8", kth.get() == 8);
+  }
+
+  @Unit
   public void testBSTInorderList() throws Test.FailException {
     final BST<Integer> bst = new BST<>();
 
@@ -40,10 +53,6 @@ public class BSTTest {
     bst.add(5);
 //    bst.add(3);
 
-    log.info("Size: " + bst.getSize());
-    for (int i : bst) {
-      log.info(i);
-    }
   }
 
   @Unit
@@ -68,20 +77,13 @@ public class BSTTest {
     for (int i : ints) {
       bst.add(i);
     }
-    log.info("Size: " + bst.getSize());
     var iter = bst.preOrder();
 
-    int[] expected = {5, 3, 2, 1, 4, 8, 1, 6, 9, 10};
-    for (Iterator<Integer> it = iter; it.hasNext(); ) {
-      int i = it.next();
-      log.info(i);
-    }
-    log.warn("Found");
+    int[] expected = {5, 3, 2, 1, 4, 8, 7, 6, 9, 10};
     var pre = bst.toPreOrder();
-    for (Integer i : pre) {
-      log.info(i);
+    for (int i = 0; i < 10; i++) {
+      Test.throwAssertQuiet(expected[i] + " == " + pre.get(i), expected[i] == pre.get(i));
     }
-    Test.throwAssertQuiet("Should be: " + Arrays.toString(expected), expected.equals(bst.toPreOrder()));
   }
 
 
@@ -110,11 +112,6 @@ public class BSTTest {
     bst.add(1);
     bst.add(3);
 
-    log.info("Size: " + bst.getSize());
     var iter = bst.postOrder();
-    for (Iterator<Integer> it = iter; it.hasNext(); ) {
-      int i = it.next();
-      log.info(i);
-    }
   }
 }

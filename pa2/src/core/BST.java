@@ -27,6 +27,19 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     }
   }
 
+  public Optional<E> kth(int k) {
+    var cnt = 1;
+    var iter = postOrder();
+    for (Iterator<E> it = iter; it.hasNext();) {
+      var i = it.next();
+      if (cnt == k) {
+        return of(i);
+      }
+      cnt++;
+    }
+    return empty();
+  }
+
   public List<E> toInOrder() {
     final List<E> inOrder = new ArrayList<>();
     toInOrder(inOrder, root);
@@ -144,22 +157,33 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
 
     @Override
     public E next() {
-      if (shouldPop) {
-        cur = of(toHandle.pop());
-      }
-      var node = cur.get();
-      var out = node.getVal();
-      if (node.right.isPresent()) {
-        toHandle.push(node.right.get());
-      }
-      if (node.left.isPresent()) {
-        toHandle.push(node.left.get());
-      }
-      shouldPop = true;
-      if (toHandle.size() == 0) {
-        cur = empty();
-      }
-      return out;
+        var node = cur.get();
+        var out = node.getVal();
+        if (node.right.isPresent()) {
+          toHandle.push(node.right.get());
+        }
+        if (node.left.isPresent()) {
+          toHandle.push(node.left.get());
+        }
+        cur = check(() -> toHandle.pop());
+        return out;
+
+//      if (shouldPop) {
+//        cur = of(toHandle.pop());
+//      }
+//      var node = cur.get();
+//      var out = node.getVal();
+//      if (node.right.isPresent()) {
+//        toHandle.push(node.right.get());
+//      }
+//      if (node.left.isPresent()) {
+//        toHandle.push(node.left.get());
+//      }
+//      shouldPop = true;
+//      if (toHandle.size() == 0) {
+//        cur = empty();
+//      }
+//      return out;
     }
   }
   private final class BSTPostOrderIterator implements Iterator<E> {
