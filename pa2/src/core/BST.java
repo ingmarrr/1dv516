@@ -14,8 +14,21 @@ public class BST<E extends Comparable<E>> implements Iterable<E> {
     root = empty();
   }
 
-  public int getSize() {
+  public int size() {
     return size;
+  }
+
+  public int height() {
+    return height(0, root) - 1;
+  }
+
+  private int height(int max, Optional<BSTNode<E>> node) {
+    if (node.isEmpty()) return 0;
+
+    var hleft = height(0, node.get().left);
+    var hright = height(0, node.get().right);
+
+    return 1 + max + Math.max(hleft, hright);
   }
 
   public void add(E val) {

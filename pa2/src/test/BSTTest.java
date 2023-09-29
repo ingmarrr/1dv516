@@ -5,7 +5,6 @@ import testing.Test;
 import testing.Unit;
 
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class BSTTest {
 
@@ -15,15 +14,41 @@ public class BSTTest {
       .build();
 
   @Unit
+  public void testHeight() throws Test.FailException {
+    BST<Integer> bst = new BST<>();
+    var is = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    for (int i : is) {
+      bst.add(i);
+    }
+//    log.info(bst.height());
+    Test.throwAssertQuiet("Height == 10", bst.height() == 9);
+    bst = new BST<>();
+    is = new int[] { 5, 3, 8, 2, 1, 4, 9, 10, 7, 6};
+    for (int i : is) {
+      bst.add(i);
+    }
+//    log.info(bst.height());
+    Test.throwAssertQuiet("Height == 4", bst.height() == 3);
+    bst = new BST<>();
+    is = new int[] { 2, 3, 1};
+    for (int i : is) {
+      bst.add(i);
+    }
+//    log.info(bst.height());
+    Test.throwAssertQuiet("Height == 2", bst.height() == 1);
+  }
+
+  @Unit
   public void testKth() throws Test.FailException {
     final BST<Integer> bst = new BST<>();
     var is = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     for (int i : is) {
       bst.add(i);
     }
-    Test.throwAssertQuiet("Size == 10", bst.getSize() == 10);
+    Test.throwAssertQuiet("Size == 10", bst.size() == 10);
     var kth = bst.kth(3);
-    Test.throwAssertQuiet("Size == 9", bst.getSize() == 9);
+    Test.throwAssertQuiet("Size == 9", bst.size() == 9);
+//    log.info(bst.toInOrder());
     Test.throwAssertQuiet("Is Optional.of", kth.isPresent());
     Test.throwAssertQuiet("kth == 8", kth.get() == 8);
   }
