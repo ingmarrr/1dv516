@@ -15,6 +15,8 @@ public class LoggerBuilder {
     this.modeEmoji = Optional.empty();
   }
 
+
+
   public LoggerBuilder mode(Mode mode) {
     this.mode = Optional.of(mode);
     return this;

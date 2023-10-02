@@ -14,6 +14,9 @@ public class Logger {
     Err;
   }
 
+  public static Logger test () {
+    return new Logger( Mode.Test, Optional.empty(), true, false);
+  }
   public static LoggerBuilder builder() {
     return new LoggerBuilder();
   }
