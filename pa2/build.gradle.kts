@@ -54,6 +54,7 @@ tasks.register<JavaExec>("runTests") {
     args = listOf("$buildDir/classes/java/test/")
     classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
     standardOutput = System.out
+    standardInput = System.`in`
 }
 
 tasks.test {

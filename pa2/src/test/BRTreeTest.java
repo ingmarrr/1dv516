@@ -118,8 +118,6 @@ public class BRTreeTest {
      *  2b    10b
      *         \
      *         11r
-     *          +
-     *           12r
      */
     Test.throwAssertQuiet("7  == Black", brt.get(7).get().getColor().isBlack());
     Test.throwAssertQuiet("2  == Black", brt.get(2).get().getColor().isBlack());
