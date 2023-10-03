@@ -13,6 +13,7 @@ public class BRNode<E extends Comparable<E>> {
   public Optional<BRNode<E>> right;
   private Color color;
   private RelToParent rel;
+  private boolean doubleBlack;
 
   public E getVal() {
     return val;
@@ -30,7 +31,7 @@ public class BRNode<E extends Comparable<E>> {
 
   @Override
   public String toString() {
-    return "(Val: " + val.toString() + ", Left: " + left.map(BRNode::toString).orElse("None") + ", Right: " + right.map(BRNode::toString).orElse("None") + ", Parent: " + parent.map(p -> p.getVal().toString()).orElse("None") + ", Color: " + color.toString() + ")";
+    return "(Val: " + val.toString() + ", Left: " + left.map(BRNode::toString).orElse("None") + ", Right: " + right.map(BRNode::toString).orElse("None") + ", Parent: " + parent.map(p -> p.getVal().toString()).orElse("None") + ", Rel: " + rel.toString() + ", Color: " + color.toString() + ")";
 //    return "(Val: " + val.toString() + ", Color: " + color.toString() + ", Rel: " + rel.toString() + ")";
   }
 
@@ -38,10 +39,26 @@ public class BRNode<E extends Comparable<E>> {
     this.rel = rel;
   }
 
-  BRNode(E val, BRNode<E> parent, RelToParent rel) {
+  public BRNode(
+      E val,
+      Optional<BRNode<E>> parent,
+      RelToParent rel,
+      Optional<BRNode<E>> left,
+      Optional<BRNode<E>> right,
+      Color color
+  ) {
+    this.val = val;
+    this.parent = parent;
+    this.rel = rel;
+    this.left = left;
+    this.right = right;
+    this.color = color;
+  }
+
+  public BRNode(E val, Optional<BRNode<E>> parent, RelToParent rel) {
     this.val = val;
     this.rel = rel;
-    this.parent = of(parent);
+    this.parent = parent;
     left = empty();
     right = empty();
     color = Color.Red;
@@ -54,6 +71,21 @@ public class BRNode<E extends Comparable<E>> {
     left = empty();
     right = empty();
     parent = empty();
+  }
+
+  public BRNode<E> clone() {
+    var brn = new BRNode<>(val, color, rel);
+    brn.left = left;
+    brn.right = right;
+    brn.parent = parent;
+    return brn;
+  }
+
+  public static BRNode nil(BRNode parent, RelToParent rel) {
+    var brn = new BRNode<>(null, Color.Black, rel);
+    brn.parent = of(parent);
+    brn.doubleBlack = true;
+    return brn;
   }
 
   public enum Color { Red, Black;
