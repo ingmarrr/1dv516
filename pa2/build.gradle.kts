@@ -63,5 +63,9 @@ tasks.test {
 }
 
 
+tasks.register<JavaExec>("huffman") {
+    mainClass.set("main.Huffman")
+    classpath = sourceSets["main"].runtimeClasspath
+}
 
 
