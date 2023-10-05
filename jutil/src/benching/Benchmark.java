@@ -25,7 +25,7 @@ public class Benchmark {
       int reps) {
     final Map<Integer, Snapshot> sts = new java.util.HashMap<>();
     log.println("\n======================================");
-    log.info("Benchmarking %s", name);
+    log.info(String.format("Benchmarking %s", name));
     log.info("size\t" + Snapshot.headers());
 
     for (int sz : sizes) {

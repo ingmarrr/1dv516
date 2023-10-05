@@ -69,3 +69,7 @@ tasks.register<JavaExec>("huffman") {
 }
 
 
+tasks.register<JavaExec>("bst") {
+    mainClass.set("bench.BSTBench")
+    classpath = sourceSets["main"].runtimeClasspath
+}

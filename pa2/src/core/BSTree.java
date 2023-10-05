@@ -72,30 +72,68 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
     };
   }
 
+  public void del(E val) {
+    del(val, root);
+  }
+
+  private void del(E val, Optional<BTNode<E>> node) {
+    if (node.isEmpty()) return;
+    var no = node.get();
+    switch (Integer.signum(node.get().getVal().compareTo(val))) {
+      case 1 -> {
+        if (no.left.isPresent()) {
+          var left = no.left.get();
+          if (left.getVal().compareTo(val) == 0) {
+            if (left.right.isPresent()) {
+              no.left = left.right;
+            } else {
+              no.left = left.left;
+            }
+          } else {
+            del(val, no.left);
+          }
+        }
+      }
+      case -1 -> {
+        if (no.right.isPresent()) {
+          var right = no.right.get();
+          if (right.getVal().compareTo(val) == 0) {
+            if (right.right.isPresent()) {
+              no.right = right.right;
+            } else {
+              no.right = right.left;
+            }
+          } else {
+            del(val, no.right);
+          }
+        }
+      }
+    }
+  }
 
   public void add(E val) {
     size++;
     if (root.isEmpty()) {
       root = of(new BTNode<>(val));
     } else {
-      addE(val, root.get());
+      add(val, root.get());
     }
   }
 
-  private void addE(E val, BTNode<E> node) {
+  private void add(E val, BTNode<E> node) {
     switch (Integer.signum(node.getVal().compareTo(val))) {
       case 1 -> {
         if (node.left.isEmpty()) {
           node.left = of(new BTNode<>(val));
         } else {
-          addE(val, node.left.get());
+          add(val, node.left.get());
         }
       }
       case -1 -> {
         if (node.right.isEmpty()) {
           node.right = of(new BTNode<>(val));
         } else {
-          addE(val, node.right.get());
+          add(val, node.right.get());
         }
       }
     };
@@ -206,7 +244,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
       if (didPop) {
         var node = cur.get();
         if (node.right.isEmpty()) {
-          cur = check(() -> toHandle.pop());
+          cur = toHandle.pop();
           return node.getVal();
         }
         cur = node.right;
@@ -221,7 +259,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
 
       var node = cur.get();
       if (node.right.isEmpty()) {
-        cur = check(() -> toHandle.pop());
+        cur = toHandle.pop();
         didPop = true;
         return node.getVal();
       }
@@ -249,7 +287,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
         if (node.left.isPresent()) {
           toHandle.push(node.left.get());
         }
-        cur = check(() -> toHandle.pop());
+        cur = toHandle.pop();
         return out;
     }
   }
@@ -268,7 +306,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
       if (didPop) {
         var node = cur.get();
         if (node.left.isEmpty()) {
-          cur = check(() -> toHandle.pop());
+          cur = toHandle.pop();
           return node.getVal();
         }
         cur = node.left;
@@ -287,7 +325,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
 
       var node = cur.get();
       if (node.left.isEmpty()) {
-        cur = check(() -> toHandle.pop());
+        cur = toHandle.pop();
         didPop = true;
         return node.getVal();
       }
@@ -311,7 +349,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
       if (didPop) {
         var node = cur.get();
         if (node.left.isEmpty()) {
-          cur = check(() -> toHandle.pop());
+          cur = toHandle.pop();
           return node;
         }
         cur = node.left;
@@ -330,7 +368,7 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
 
       var node = cur.get();
       if (node.left.isEmpty()) {
-        cur = check(() -> toHandle.pop());
+        cur = toHandle.pop();
         didPop = true;
         return node;
       }

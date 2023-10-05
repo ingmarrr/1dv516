@@ -37,7 +37,6 @@ public class BSTTest {
       bst.add(i);
     }
     var in = bst.toInOrder();
-//    log.info(in);
     for (int i : range(3)) {
       Test.throwAssertQuiet(is[i] + " == " + in.get(i), is[i] == in.get(i));
     }
@@ -45,7 +44,6 @@ public class BSTTest {
     bst.remove(2);
     in = bst.toInOrder();
     is = new int[] { 1, 3};
-//    log.info(in);
     for (int i : range(2)) {
       Test.throwAssertQuiet(is[i] + " == " + in.get(i), is[i] == in.get(i));
     }
