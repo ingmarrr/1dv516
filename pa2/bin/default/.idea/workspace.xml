@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb452de2-c8a0-496e-a17b-856caa80fa77" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/benching/Benchmark.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/benching/Benchmark.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/benching/Snapshot.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/benching/Snapshot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/logging/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/logging/Level.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/logging/Logger$Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/logging/Logger$Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/logging/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/logging/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/logging/LoggerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/logging/LoggerBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$Case.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$Cmp.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$Cmp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$FailException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$FailException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/testing/Test$Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/bin/main/testing/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/bin/main/testing/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/src/benching/Benchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/src/benching/Benchmark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/src/benching/Snapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/src/benching/Snapshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jutil/src/logging/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jutil/src/logging/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa1/src/benchmark/Benchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pa1/src/benchmark/Benchmark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.aux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.fdb_latexmk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.fls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.synctex.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/report.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bench/BSTBench.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bench/BSTBench.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bench/ISOBench.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/BRNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/BRTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/BSTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/BSTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/BTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/HuffmanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/HuffmanTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Huffman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Huffman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/BRTreeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/BSTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/BSTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/BTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/BTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/HuffmanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/HuffmanTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2WUIOOsaRsigVPNA9Gtr28gA8PU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "finala2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb452de2-c8a0-496e-a17b-856caa80fa77" name="Changes" comment="" />
+      <created>1696780700030</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696780700030</updated>
+      <workItem from="1696780703730" duration="3812000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

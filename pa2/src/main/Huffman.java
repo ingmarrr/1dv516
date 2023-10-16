@@ -53,8 +53,6 @@ public class Huffman {
 
     var nodes = hm.entrySet().stream().map(e -> new HuffmanNode(e.getKey(), e.getValue())).collect(Collectors.toList());
     var ht = new HuffmanTree(nodes);
-    for (var t : ht) {
-      t.print();
-    }
+    ht.print();
   }
 }

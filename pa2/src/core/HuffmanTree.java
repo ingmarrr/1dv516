@@ -50,10 +50,8 @@ public class HuffmanTree implements Iterable<HuffmanNode> {
   }
 
   public void print() {
-    var height = height(root);
-    log.info(height);
     StringBuilder sb = new StringBuilder();
-    printLvl(sb, "", "", root, root.get().right.isPresent());
+    printLvl(sb, "",  root, root.get().right.isPresent());
     log.info(sb.toString());
     log.info(root.get().right.get().toString());
   }
@@ -61,34 +59,18 @@ public class HuffmanTree implements Iterable<HuffmanNode> {
   public void printLvl(
       StringBuilder sb,
       String padding,
-      String pointer,
       Optional<HuffmanNode> node,
-      boolean hasRightSibling
+      boolean hasRight
   ) {
-    if (node.isPresent()) {
-      sb.append("\n");
-      sb.append(padding);
-      sb.append(pointer);
-      if (node.get().getCh().isPresent()) {
-        sb.append(node.get().toString() + " :: " + code(node.get().getCh().get()));
-      } else {
-        sb.append("None :: " + node.get().freq);
-      }
+    if (node.isEmpty()) return;
+    sb.append("\n");
+    sb.append(padding);
+    sb.append("|--");
+    sb.append(node.get().getCh().map(c -> node.get().toString() + " :: " + code(c)).orElse("None :: " + node.get().freq));
+    String p = padding + (hasRight ? "|  " : "   ");
 
-      StringBuilder paddingBuilder = new StringBuilder(padding);
-      if (hasRightSibling) {
-        paddingBuilder.append("│  ");
-      } else {
-        paddingBuilder.append("   ");
-      }
-
-      String paddingForBoth = paddingBuilder.toString();
-      String pointerRight = "└──";
-      String pointerLeft = (node.get().right.isPresent()) ? "├──" : "└──";
-
-      printLvl(sb, paddingForBoth, pointerLeft, node.get().left, node.get().right.isPresent());
-      printLvl(sb, paddingForBoth, pointerRight, node.get().right, false);
-    }
+    printLvl(sb, p, node.get().left, node.get().right.isPresent());
+    printLvl(sb, p, node.get().right, false);
   }
 
 

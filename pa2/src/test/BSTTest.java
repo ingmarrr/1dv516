@@ -23,10 +23,8 @@ public class BSTTest {
       bst.add(i);
     }
 
-    var in = bst.toInOrder();
     Test.throwAssertQuiet("Contains 1", bst.contains(1));
     Test.throwAssertQuiet("Contains 2", bst.contains(2));
-//    Test.throwAssertQuiet("Contains 3", bst.contains(3));
   }
 
   @Unit
@@ -57,21 +55,18 @@ public class BSTTest {
     for (int i : is) {
       bst.add(i);
     }
-//    log.info(bst.height());
     Test.throwAssertQuiet("Height == 10", bst.height() == 9);
     bst = new BSTree<>();
     is = new int[] { 5, 3, 8, 2, 1, 4, 9, 10, 7, 6};
     for (int i : is) {
       bst.add(i);
     }
-//    log.info(bst.height());
     Test.throwAssertQuiet("Height == 4", bst.height() == 3);
     bst = new BSTree<>();
     is = new int[] { 2, 3, 1};
     for (int i : is) {
       bst.add(i);
     }
-//    log.info(bst.height());
     Test.throwAssertQuiet("Height == 2", bst.height() == 1);
   }
 

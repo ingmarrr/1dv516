@@ -1,11 +1,13 @@
 package bench;
 
 import benching.Benchmark;
+import core.AVLTree;
 import core.BSTree;
 import logging.Logger;
 import logging.Mode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -21,37 +23,34 @@ public class BSTBench {
       .emoji(true)
       .build();
 
+  private record State<E extends Comparable<E>>(BSTree<E> bst, int size) {
+
+  }
+
   public static void main(String[] args) {
-    var bm = new Benchmark();
+    var bm = new Benchmark("benchmarks");
     var rd = new Random();
 
-    final int upper = 100;
-    final int reps = 1;
-    final int step = 10;
-    final List<Integer> randNums = range(upper).toList().stream().map(i -> rd.nextInt(upper * 2)).collect(Collectors.toList());
-    final List<Integer> choices = new ArrayList<>();
-    final List<Integer> deleted = new ArrayList<>();
-    final List<Integer> sizes = range(step, upper, step).toList();
-    BSTree<Integer> bst = new BSTree<>();
-    for (int ix : range(upper)) {
-      final int choice = randNums.get(rd.nextInt(upper));
-      choices.add(choice);
-      bst.add(choice);
-    }
-    for (int jx :range(choices.size() / 2)) {
-      var del = choices.get(rd.nextInt(choices.size()));
-      deleted.add(del);
-      bst.remove(del);
-    }
-    for (Integer d : deleted) {
-      var removed = choices.remove(d);
-    }
-    for (int i: range(10)) {
-      var choice = choices.get(rd.nextInt(choices.size()));
-      var res = bst.contains(choice);
-      log.info(choice, " \t", res);
-    }
-    log.info("Height\t", bst.height());
-//    bm.bench("BST Bench", "bst", setup, fn, sizes, reps);
+    final int upper = 100_000;
+    final int reps = 10_000;
+    final int step = 1000;
+    final Function<Integer, BSTBench.State<Integer>> setup = sz -> {
+      BSTree<Integer> bst = new BSTree<>();
+      for (int ix : range(sz * 2)) {
+        bst.add(rd.nextInt(50000));
+      }
+      log.print("Before: " + bst.size());
+      for (int jx : range(110000)) {
+        bst.del(rd.nextInt(sz / 2));
+      }
+      log.print(" | After : "  + bst.size());
+      return new BSTBench.State(bst, sz);
+    };
+    final Function<BSTBench.State<Integer>, Integer> func = state -> {
+      state.bst.contains(rd.nextInt(state.size / 2));
+      return state.bst.height();
+    };
+
+    bm.bench("BST Bench", "bst_100", setup, func, 10_000, 1000, 1000);
   }
 }

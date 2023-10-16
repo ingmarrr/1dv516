@@ -44,7 +44,7 @@ public class Range implements Iterable<Integer> {
 
       @Override
       public boolean hasNext() {
-        return i < max;
+        return step > 0 ? i < max : i > max;
       }
 
       @Override

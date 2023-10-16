@@ -15,20 +15,22 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
   }
 
   public int size() {
-    return size;
+    return size(root);
   }
 
-  public int height() {
-    return height(0, root) - 1;
-  }
-
-  private int height(int max, Optional<BTNode<E>> node) {
+  private int size(Optional<BTNode<E>> node) {
     if (node.isEmpty()) return 0;
+    return size(node.get().left) + size(node.get().right) + 1;
+  }
+  public int height() {
+    return height(root);
+  }
 
-    var hleft = height(0, node.get().left);
-    var hright = height(0, node.get().right);
-
-    return 1 + max + Math.max(hleft, hright);
+  private int height(Optional<BTNode<E>> node) {
+    if (node.isEmpty()) return -1;
+    var hleft = height(node.get().left);
+    var hright = height(node.get().right);
+    return 1 + Math.max(hleft, hright);
   }
 
   public void remove(E val) {
@@ -73,42 +75,37 @@ public class BSTree<E extends Comparable<E>> implements Iterable<E> {
   }
 
   public void del(E val) {
-    del(val, root);
+    root = del(val, root);
   }
 
-  private void del(E val, Optional<BTNode<E>> node) {
-    if (node.isEmpty()) return;
+  private Optional<BTNode<E>> del(E val, Optional<BTNode<E>> node) {
+    if (node.isEmpty()) return node;
     var no = node.get();
-    switch (Integer.signum(node.get().getVal().compareTo(val))) {
-      case 1 -> {
-        if (no.left.isPresent()) {
-          var left = no.left.get();
-          if (left.getVal().compareTo(val) == 0) {
-            if (left.right.isPresent()) {
-              no.left = left.right;
-            } else {
-              no.left = left.left;
-            }
-          } else {
-            del(val, no.left);
-          }
-        }
-      }
-      case -1 -> {
-        if (no.right.isPresent()) {
-          var right = no.right.get();
-          if (right.getVal().compareTo(val) == 0) {
-            if (right.right.isPresent()) {
-              no.right = right.right;
-            } else {
-              no.right = right.left;
-            }
-          } else {
-            del(val, no.right);
-          }
-        }
+
+    switch (Integer.signum(no.getVal().compareTo(val))) {
+      case 1 -> no.left = del(val, no.left);
+      case -1 -> no.right = del(val, no.right);
+      case 0 -> {
+        if (no.left.isEmpty()) return no.right;
+        if (no.right.isEmpty()) return no.left;
+        node = min(no.right);
+        node.get().right = delMin(no.right);
+        node.get().left = no.left;
+        return node;
       }
     }
+    return of(no);
+  }
+
+  private Optional<BTNode<E>> min(Optional<BTNode<E>> node) {
+    if (node.get().left.isEmpty()) return node;
+    return min(node.get().left);
+  }
+
+  private Optional<BTNode<E>> delMin(Optional<BTNode<E>> node) {
+    if (node.get().left.isEmpty()) return node.get().right;
+    node.get().left = delMin(node.get().left);
+    return node;
   }
 
   public void add(E val) {

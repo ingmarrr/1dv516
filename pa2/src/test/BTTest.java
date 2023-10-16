@@ -2,6 +2,7 @@ import core.BTNode;
 import core.BTree;
 import logging.Logger;
 import logging.Mode;
+import testing.Test;
 import testing.Unit;
 
 public class BTTest {
@@ -12,26 +13,18 @@ public class BTTest {
       .build();
 
   @Unit
-  public void testIso() {
+  public void testIso() throws Test.FailException {
     var bt = new BTree<Integer>();
     bt.add(1);
     bt.add(2);
     bt.add(3);
-    bt.add(4);
-    bt.add(5);
-    bt.add(6);
-    bt.add(7);
-    bt.printInorder();
 
     var other = new BTree<Integer>();
-    bt.add(1);
-    bt.add(3);
-    bt.add(2);
-    bt.add(7);
-    bt.add(6);
-    bt.add(5);
-    bt.add(4);
+    other.add(1);
+    other.add(2);
+    other.add(3);
 
-    log.info(bt.isIso(bt.getRoot(), other.getRoot()));
+    Test.throwAssertQuiet("Are Isomorphic", bt.isIso(other));
+
   }
 }

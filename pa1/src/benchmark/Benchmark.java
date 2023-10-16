@@ -36,7 +36,7 @@ public class Benchmark {
 
     for (int sz : sizes) {
       final T state = setup.apply(sz);
-      final Snapshot st = benchSizeST(state, fn, sz, reps);
+      final Snapshot st = benchSizeST(state, fn, reps);
       log.bench(sz + (sz < 1000 ? " " : "") + "\t" + st.toFmt());
       res.put(sz, st);
     }
@@ -54,7 +54,7 @@ public class Benchmark {
     }
   }
 
-  public <T> Snapshot benchSizeST(T state, Consumer<T> fn, int size, int reps) {
+  public <T> Snapshot benchSizeST(T state, Consumer<T> fn, int reps) {
     final List<Long> durations = IntStream.range(0, reps)
         .mapToObj(i -> {
           final long start = System.nanoTime();
