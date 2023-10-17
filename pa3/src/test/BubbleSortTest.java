@@ -17,7 +17,7 @@ public class BubbleSortTest {
       .build();
 
   @Unit
-  public void testBubble() throws Test.FailException {
+  public void testBubbleSort() throws Test.FailException {
     var list = new Integer[] { 1, 3, 5, 2, 4 };
     var sort = new Integer[] { 1, 2, 3, 4, 5 };
     Bubble.sort(list);

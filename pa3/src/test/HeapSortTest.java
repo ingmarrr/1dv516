@@ -14,12 +14,9 @@ public class HeapSortTest {
       .build();
 
   @Unit
-  public void testSort() throws Test.FailException {
+  public void testHeapSort() throws Test.FailException {
     final List<Integer> list = List.of(1, 3, 2, 5, 4);
     final Heap<Integer> hp = new Heap<Integer>(2, list);
     hp.sort();
-    for (int i : hp) {
-      log.info(i);
-    }
   }
 }
