@@ -3,6 +3,8 @@
 
 ## Prerequisites
 
+### ! Do this before running anything
+
 First, you need to build the `jtuil` library. To do so, go into the `jutil` project, run the following commands:
 
 ```bash
@@ -34,3 +36,7 @@ To run the Huffman Encoder, you can run the following commands:
 ```bash
 gradle huffman --args="<path-to-file>"
 ```
+
+## Running the tests
+
+To test any implementations, simply run `gradle test`

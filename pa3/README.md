@@ -40,3 +40,11 @@ gradle huffman --args="<path-to-file>"
 ## Running the tests
 
 To test any implementations, simply run `gradle test`
+
+# Spookie CTF
+# TSG CTF 2023
+
+# Tools
+
+- Burp
+- Proxy Foxy

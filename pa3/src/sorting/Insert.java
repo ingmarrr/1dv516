@@ -49,4 +49,16 @@ public class Insert {
       }
     }
   }
+
+  public static void sort(int[] arr, int low, int high) {
+    for (int ix : range(low, high)) {
+      for (int jx : range(ix, low, -1)) {
+        if (jx < low) continue;
+        if (arr[jx - 1] < arr[jx]) break;
+        var tmp = arr[jx];
+        arr[jx] = arr[jx - 1];
+        arr[jx -1 ] = tmp;
+      }
+    }
+  }
 }

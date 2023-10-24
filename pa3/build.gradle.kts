@@ -62,3 +62,12 @@ tasks.test {
     exclude("**/*")
 }
 
+tasks.register<JavaExec>("vehicle") {
+    mainClass.set("benchmarks.VehicleQuadHashMapBench")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+tasks.register<JavaExec>("quick") {
+    mainClass.set("benchmarks.QuickSortBench")
+    classpath = sourceSets["main"].runtimeClasspath
+}

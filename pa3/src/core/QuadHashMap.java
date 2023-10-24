@@ -20,10 +20,10 @@ public class QuadHashMap<K extends Comparable<K>, V> {
     buckets = new Entry[initCap];
   }
 
-  static class Entry<K, V> {
+  public static class Entry<K, V> {
     public K key;
     public V val;
-    public boolean deleted;
+    private boolean deleted;
 
     public Entry(K k, V v) {
       key = k;
@@ -51,9 +51,15 @@ public class QuadHashMap<K extends Comparable<K>, V> {
     size--;
   }
 
+  public Entry<K, V>[] getBuckets() {
+    return buckets;
+  }
+
   private int ix(K key) {
+    System.out.println(key);
     int pos = key.hashCode() % buckets.length;
     int off = 1;
+    System.out.println(pos);
 
     while(buckets[pos] != null && !buckets[pos].key.equals(key)) {
       pos += off;
@@ -98,4 +104,6 @@ public class QuadHashMap<K extends Comparable<K>, V> {
   public int getSize() {
     return size;
   }
+
+
 }

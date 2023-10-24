@@ -7,19 +7,34 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static range.Range.range;
 
-public class Heap<E extends Comparable<E>> implements Iterable<E> {
+public class Heap implements Iterable {
 
   private final static int CAP = 15;
   private int size;
   private final int d;
-  private E[] bt;
+  private int[] bt;
 
-  public Heap(int d, List<E> elems) {
+  public int[] getBt() {
+    int[] out = new int[bt.length - 1];
+    System.arraycopy(bt, 1, out, 0, bt.length - 1);
+    return out;
+  }
+
+  public Heap(int d, int[] arr) {
     this.d = d;
-    bt = (E[]) new Comparable[elems.size() + 1];
-    size = elems.size();
-    for (int i : range(elems.size())) {
-      bt[i + 1] = elems.get(i);
+    bt = new int[arr.length + 1];
+    size = arr.length;
+    for (int i : range(arr.length)) {
+      bt[i + 1] = arr[i];
+    }
+  }
+
+  public Heap(int d, int[] arr, int low, int high) {
+    this.d = d;
+    bt = new int[high - low + 1];
+    size = bt.length - 1;
+    for (int i : range(low, high)) {
+      bt[i - low + 1] = arr[i];
     }
   }
 
@@ -35,9 +50,9 @@ public class Heap<E extends Comparable<E>> implements Iterable<E> {
     }
   }
 
-  public Optional<E> delMax() {
+  public Optional<Integer> delMax() {
     if (size > 0) {
-      E max = bt[1];
+      int max = bt[1];
 
       bt[1] = bt[size];
       bt[size] = max;
@@ -52,9 +67,9 @@ public class Heap<E extends Comparable<E>> implements Iterable<E> {
   private void sink(int valx) {
     while (valx * d <= size) {
       int childix = valx * d;
-      if (childix < size && bt[childix].compareTo(bt[childix + 1]) < 0) childix++;
-      if (!(bt[valx].compareTo(bt[childix]) < 0)) break;
-      final E tmp = bt[valx];
+      if (childix < size && bt[childix] < (bt[childix + 1])) childix++;
+      if (!(bt[valx] < (bt[childix]))) break;
+      final int tmp = bt[valx];
       bt[valx] = bt[childix];
       bt[childix] = tmp;
       valx = childix;
@@ -68,11 +83,11 @@ public class Heap<E extends Comparable<E>> implements Iterable<E> {
   }
 
   @Override
-  public Iterator<E> iterator() {
+  public Iterator<Integer> iterator() {
     return new InorderIterator();
   }
 
-  private class InorderIterator implements Iterator<E> {
+  private class InorderIterator implements Iterator<Integer> {
     int ix = 0;
 
     @Override
@@ -81,7 +96,7 @@ public class Heap<E extends Comparable<E>> implements Iterable<E> {
     }
 
     @Override
-    public E next() {
+    public Integer next() {
       return bt[++ix];
     }
   }

@@ -11,10 +11,12 @@ public record Snapshot(
 
   @Override
   public String toString() {
+    final String fmt = "%-20s";
     return String.format(
         Locale.US,
         "%.6f; %.6f; %.6f; %.6f; %.6f",
-        asMs(duration), asMs(mean), asMs(min), asMs(max), asMs(stdDev));
+        fmtNano(duration, fmt), fmtNano(mean, fmt), fmtNano(min, fmt),
+        fmtNano(max, fmt), fmtNano(stdDev, fmt));
   }
 
   public String toFmt() {

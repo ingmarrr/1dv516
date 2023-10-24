@@ -7,20 +7,29 @@ import static range.Range.range;
 
 public class Quick {
 
-  public static void sort(int[] arr, int depth) {
-    boolean mustSort = sort(arr, 0, depth, 0, arr.length - 1);
-    if (mustSort) Insert.sort(arr);
+  public enum Fallback { Heap, Insert };
+
+  public static void sort(int[] arr, int depth, Fallback fallback) {
+    sort(arr, 0, fallback, depth, 0, arr.length - 1);
   }
 
-  private static boolean sort(int[] arr, int depth, int allowedDepth, int low, int high) {
-    if (depth == allowedDepth) return true;
+  private static void sort(int[] arr, int depth, Fallback fallback, int allowedDepth, int low, int high) {
+    if (depth == allowedDepth) {
+      switch (fallback) {
+        case Heap -> {
+          var hp = new Heap(2, arr, low, high + 1);
+          hp.sort();
+          System.arraycopy(hp.getBt(), 0, arr, low, high - low + 1);
+        }
+        case Insert -> Insert.sort(arr, low, high + 1);
+      }
+      return;
+    }
     if (low < high) {
       int pivotIx = partition(arr, low, high);
-      boolean lb = sort(arr, depth + 1, allowedDepth, low, pivotIx - 1);
-      boolean rb = sort(arr, depth + 1, allowedDepth, pivotIx + 1, high);
-      if (lb || rb) return true;
+      sort(arr, depth + 1, fallback, allowedDepth, low, pivotIx - 1);
+      sort(arr, depth + 1, fallback, allowedDepth, pivotIx + 1, high);
     }
-    return false;
   }
 
   private static int partition(int[] arr, int low, int high) {
