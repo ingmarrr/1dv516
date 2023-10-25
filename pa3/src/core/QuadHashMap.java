@@ -11,6 +11,7 @@ public class QuadHashMap<K extends Comparable<K>, V> {
   private static final int initCap = 16;
   private Entry<K, V>[] buckets;
   private int size = 0;
+  private double loadFactor = 0.7;
 
   public QuadHashMap() {
     buckets = new Entry[initCap];
@@ -23,12 +24,25 @@ public class QuadHashMap<K extends Comparable<K>, V> {
   public static class Entry<K, V> {
     public K key;
     public V val;
+    public int destIx;
+    public int actualIx;
     private boolean deleted;
 
-    public Entry(K k, V v) {
+    public Entry(K k, V v, int dix, int aix) {
       key = k;
       val = v;
+      destIx = dix;
+      actualIx = aix;
       deleted = false;
+    }
+
+    @Override
+    public String toString() {
+      return "Key: " + key.toString()
+          + " Val: " + val.toString()
+          + " Destination Index: " + destIx
+          + " Actual Index: " + actualIx
+          + " Offset: " + Math.abs(actualIx - destIx);
     }
   }
 
@@ -40,7 +54,7 @@ public class QuadHashMap<K extends Comparable<K>, V> {
   public void put(K key, V val) {
     final int kx = ix(key);
     if (!absent(kx)) return;
-    buckets[kx] = new Entry<>(key, val);
+    buckets[kx] = new Entry<>(key, val, key.hashCode() % buckets.length, kx);
     if (++size > buckets.length / 2) rehash();
   }
 
@@ -56,9 +70,11 @@ public class QuadHashMap<K extends Comparable<K>, V> {
   }
 
   private int ix(K key) {
-    System.out.println(key);
+    System.out.println(key.hashCode());
+
     int pos = key.hashCode() % buckets.length;
     int off = 1;
+    System.out.println(buckets.length);
     System.out.println(pos);
 
     while(buckets[pos] != null && !buckets[pos].key.equals(key)) {
@@ -80,15 +96,18 @@ public class QuadHashMap<K extends Comparable<K>, V> {
 
   private void rehash() {
     final Entry<K, V>[] old = buckets;
-    buckets = new Entry[nextPrime(2 * buckets.length)];
+    buckets = new Entry[nextSize()];
     for (int ix : range(old.length)) {
       if (!absent(old, ix)) put(old[ix].key, old[ix].val);
     }
   }
 
-  private int nextPrime(int n) {
-    while (!isPrime(n++)) {}
-    return n;
+  private int nextSize() {
+    int sz = (int) (size / loadFactor);
+    int cap = 1;
+    while (cap < sz) cap <<= 1;
+    while (!isPrime(cap++)) {}
+    return cap;
   }
 
   private boolean isPrime(int num) {

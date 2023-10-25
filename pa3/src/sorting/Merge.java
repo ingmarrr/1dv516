@@ -11,7 +11,7 @@ public class Merge {
 
     int size = 1;
     int len = arr.length;
-
+    
     while (size <= len - 1) {
       int low = 0;
 
@@ -41,6 +41,7 @@ public class Merge {
       size = 2 * size;
     }
   }
+
 
   public static void sortRecursive(int[] arr) {
     if (arr == null || arr.length <= 1) return;

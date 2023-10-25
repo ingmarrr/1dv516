@@ -118,7 +118,6 @@ public class Benchmark {
     final Map<Integer, Snapshot> sts = new java.util.HashMap<>();
     log.println("\n+======================================+");
     log.info(String.format("Benchmarking %s", name));
-    log.info("Size;\t" + Snapshot.headers().replace(";", "\t"));
 
     for (int sz : sizes) {
       final T state = setup.apply(sz);

@@ -11,12 +11,11 @@ public record Snapshot(
 
   @Override
   public String toString() {
-    final String fmt = "%-20s";
     return String.format(
         Locale.US,
-        "%.6f; %.6f; %.6f; %.6f; %.6f",
-        fmtNano(duration, fmt), fmtNano(mean, fmt), fmtNano(min, fmt),
-        fmtNano(max, fmt), fmtNano(stdDev, fmt));
+        "%.6f;%.6f;%.6f;%.6f;%.6f",
+        asMs(duration), asMs(mean), asMs(min),
+        asMs(max), asMs(stdDev));
   }
 
   public String toFmt() {
@@ -28,10 +27,12 @@ public record Snapshot(
   }
 
   public static String headers() {
-    final String fmt = "%-20s";
+//    final String fmt = "%-20s";
     return String.format(
         "%s;%s;%s;%s;%s",
-        "Duration", "Mean", "Median", "Min", "Max", "StdDev");
+        "Duration", "Mean",
+        "Median", "Min",
+        "Max", "StdDev");
   }
 
   public static Snapshot fromString(String str) {

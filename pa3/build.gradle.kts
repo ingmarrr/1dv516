@@ -63,11 +63,16 @@ tasks.test {
 }
 
 tasks.register<JavaExec>("vehicle") {
-    mainClass.set("benchmarks.VehicleQuadHashMapBench")
+    mainClass.set("main.VehicleQuadHashMapBench")
     classpath = sourceSets["main"].runtimeClasspath
 }
 
 tasks.register<JavaExec>("quick") {
-    mainClass.set("benchmarks.QuickSortBench")
+    mainClass.set("main.QuickSortBench")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+tasks.register<JavaExec>("merge") {
+    mainClass.set("main.MergeSortBench")
     classpath = sourceSets["main"].runtimeClasspath
 }

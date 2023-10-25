@@ -18,7 +18,9 @@ public class MergeSortTest {
 
     int[] arr = new int[] { 4, 6, 1, 3, 2, 5 };
 
+    log.info(Arrays.toString(arr));
     Merge.sortIterative(arr);
+    log.info(Arrays.toString(arr));
 
     Test.throwAssertQuiet("1 is first", arr[0] == 1);
     Test.throwAssertQuiet("2 is first", arr[1] == 2);
@@ -32,7 +34,9 @@ public class MergeSortTest {
   public void testMergeSortRecursive() throws Test.FailException {
     int[] arr = new int[] { 4, 6, 1, 3, 2, 5 };
 
+    log.info(Arrays.toString(arr));
     Merge.sortRecursive(arr);
+    log.info(Arrays.toString(arr));
 
     Test.throwAssertQuiet("1 is first", arr[0] == 1);
     Test.throwAssertQuiet("2 is first", arr[1] == 2);
