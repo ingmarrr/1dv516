@@ -76,3 +76,8 @@ tasks.register<JavaExec>("merge") {
     mainClass.set("main.MergeSortBench")
     classpath = sourceSets["main"].runtimeClasspath
 }
+
+tasks.register<JavaExec>("shell") {
+    mainClass.set("main.ShellSortBench")
+    classpath = sourceSets["main"].runtimeClasspath
+}

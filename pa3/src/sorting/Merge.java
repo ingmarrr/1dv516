@@ -6,72 +6,41 @@ import java.util.List;
 import static range.Range.range;
 
 public class Merge {
-
   public static void sortIterative(int[] arr) {
-
-    int size = 1;
     int len = arr.length;
-    
-    while (size <= len - 1) {
-      int low = 0;
+    int[] auxiliary = new int[len];
 
-      while (low < len - 1) {
-
-        int mid = Math.min(low + size - 1, len - 1);
-        int hi = Math.min(low + 2 * size - 1, len - 1);
-        int ln = mid - low + 1;
-        int rn = hi - mid;
-
-        int[] la = new int[ln];
-        int[] ra = new int[rn];
-
-        for (int lx : range(ln)) {
-          la[lx] = arr[low + lx];
-        }
-
-        for (int rx : range(rn)) {
-          ra[rx] = arr[mid + rx + 1];
-        }
-
-        merge(arr, low, la, ra);
-
-        low += 2 * size;
+    for (int size = 1; size < len; size *= 2) {
+      for (int low = 0; low < len - size; low += 2 * size) {
+        int mid = low + size - 1;
+        int high = Math.min(low + 2 * size - 1, len - 1);
+        merge(arr, auxiliary, low, mid, high);
       }
-
-      size = 2 * size;
     }
   }
-
 
   public static void sortRecursive(int[] arr) {
-    if (arr == null || arr.length <= 1) return;
-    int mid = arr.length / 2;
-
-    var la = Arrays.copyOfRange(arr, 0, mid);
-    var ra = Arrays.copyOfRange(arr, mid, arr.length);
-
-    sortRecursive(la);
-    sortRecursive(ra);
-
-    merge(arr, 0, la, ra);
+    int[] aux = new int[arr.length];
+    sortRecursive(arr, aux, 0, arr.length - 1);
   }
 
-  private static void merge(int[] arr, int kx, int[] la, int[] ra) {
-    int ix = 0, jx = 0;
-    while (ix < la.length && jx < ra.length) {
-      if (la[ix] < ra[jx]) {
-        arr[kx++] = la[ix++];
-      } else {
-        arr[kx++] = ra[jx++];
-      }
-    }
+  private static void sortRecursive(int[] arr, int[] aux, int low, int hi) {
+    if (hi <= low) return;
+    int mid = low + (hi - low) / 2;
+    sortRecursive(arr, aux, low, mid);
+    sortRecursive(arr, aux, mid + 1, hi);
+    merge(arr, aux, low, mid, hi);
+  }
 
-    while (ix < la.length) {
-      arr[kx++] = la[ix++];
-    }
+  private static void merge(int[] arr, int[] aux, int low, int mid, int high) {
+    System.arraycopy(arr, low, aux, low, high - low + 1);
 
-    while (jx < ra.length) {
-      arr[kx++] = ra[jx++];
+    int lowx = low, midx = mid + 1;
+    for (int kx : range(low, high + 1)) {
+      if (lowx > mid) arr[kx] = aux[midx++];
+      else if (midx > high) arr[kx] = aux[lowx++];
+      else if (aux[midx] < aux[lowx]) arr[kx] = aux[midx++];
+      else arr[kx] = aux[lowx++];
     }
   }
 

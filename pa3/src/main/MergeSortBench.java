@@ -14,7 +14,6 @@ import static range.Range.range;
 
 public class MergeSortBench {
 
-
   private static final Logger log = Logger.builder()
       .mode(Mode.Bench)
       .emoji(true)
@@ -23,9 +22,9 @@ public class MergeSortBench {
   public static void main(String[] args) {
 
     var rand = new Random();
-    var bm = new Benchmark("merge_bench_results");
-    var upper = 250_000;
-    var reps = 100;
+    var bm = new Benchmark("merge_bench");
+    var upper = 400_000;
+    var reps = 10;
     var step = 1_000;
     var sizes = range(step, upper, step).toList();
 

@@ -29,20 +29,15 @@ public final class Vehicle implements Comparable<Vehicle> {
     var makes = new String[] {
         "Ford", "Chevrolet", "Toyota", "Honda", "Nissan", "Jeep", "Hyundai", "Subaru", "Kia", "GMC",
         "Dodge", "BMW", "Mercedes-Benz", "Lexus", "Volkswagen", "Mazda", "Audi", "Buick", "Cadillac",
-        // "Acura", "Lincoln", "Infiniti", "Mitsubishi", "Chrysler", "Volvo", "Land
-        // Rover", "Porsche",
-        // "Jaguar", "Tesla", "Fiat", "Mini", "Scion", "Ram", "Maserati", "Bentley",
-        // "Ferrari", "Smart",
-        // "Lamborghini", "Aston Martin", "Rolls-Royce", "Lotus", "McLaren", "Alfa
-        // Romeo", "Bugatti",
-        // "Genesis", "Karma", "Hummer", "Maybach", "Saab", "Saturn", "Pontiac",
-        // "Suzuki", "Oldsmobile",
-        // "Plymouth", "Mercury", "Aston Martin", "Ferrari", "Lamborghini", "Maserati",
-        // "McLaren", "Alfa"
+         "Acura", "Lincoln", "Infiniti", "Mitsubishi", "Chrysler", "Volvo", "Land", "Rover", "Porsche",
+         "Jaguar", "Tesla", "Fiat", "Mini", "Scion", "Ram", "Maserati", "Bentley", "Ferrari", "Smart",
+         "Lamborghini", "Aston Martin", "Rolls-Royce", "Lotus", "McLaren", "Alfa", "Romeo", "Bugatti",
+         "Genesis", "Karma", "Hummer", "Maybach", "Saab", "Saturn", "Pontiac", "Suzuki", "Oldsmobile",
+         "Plymouth", "Mercury", "Aston Martin", "Ferrari", "Lamborghini", "Maserati", "McLaren", "Alfa"
     };
 
     return new Vehicle(
-        rand.nextInt(100) + 1920,
+        rand.nextInt(103) + 1920,
         Color.values()[rand.nextInt(Color.values().length)],
         makes[rand.nextInt(makes.length)],
         new Plate(

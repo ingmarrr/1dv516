@@ -18,35 +18,36 @@ public class QuickSortBench {
       .emoji(true)
       .build();
 
+  record State(int[] arr, int depth) {}
+
   public static void main(String[] args) {
     var rand = new Random();
-    var bm = new Benchmark("qs_bench_results");
+    var bm = new Benchmark("qs_bench");
+    var upper = 400_000;
+    var reps = 1;
+    var depths = range(1, 40).toList();
 
-    for (var upper : range(10_000, 210_000, 10_000)) {
-      var arr = new int[upper];
+    final Function<Integer, State> setup = size -> {
+      int[] arr = new int[upper];
       for (int ix : range(upper)) {
-        arr[ix] = rand.nextInt(upper);
+        arr[ix] = rand.nextInt(size);
       }
-      var depths = range(40).toList();
-      var reps = 1;
+      return new State(arr, size);
+    };
 
-      final Function<Integer, Integer> setup = size -> {
-        for (int ix : range(upper)) {
-          arr[ix] = rand.nextInt(upper);
-        }
-        return size;
-      };
+    final Consumer<State> funcInsert = state -> {
+      Quick.sort(state.arr, state.depth, Quick.Fallback.Insert);
+    };
+    final Consumer<State> funcHeap = state -> {
+      Quick.sort(state.arr, state.depth, Quick.Fallback.Heap);
+    };
+    final Consumer<State> funcNone = state -> {
+      Quick.sort(state.arr);
+    };
 
-      final Consumer<Integer> funcInsert = depth -> {
-        Quick.sort(arr, depth, Quick.Fallback.Insert);
-      };
-      final Consumer<Integer> funcHeap = depth -> {
-        Quick.sort(arr, depth, Quick.Fallback.Heap);
-      };
-
-      bm.bench("Quick Sort - Fallback Insert", "qs_insert_" + upper, setup, funcInsert, depths, reps);
-      bm.bench("Quick Sort - Fallback Heap", "qs_heap_" + upper, setup, funcHeap, depths, reps);
-    }
-
+    bm.bench("Quick Sort - Fallback Insert", "qs_insert_" + upper, setup, funcInsert, depths, reps);
+    bm.bench("Quick Sort - Fallback Heap", "qs_heap_" + upper, setup, funcHeap, depths, reps);
+    bm.bench("Quick Sort - Fallback None", "qs_none_" + upper, setup, funcNone, depths, reps);
   }
+
 }

@@ -7,14 +7,18 @@ import static range.Range.range;
 
 public class Quick {
 
-  public enum Fallback { Heap, Insert };
+  public enum Fallback { Heap, Insert, None };
+
+  public static void sort(int[] arr) {
+    sort(arr, 0, Fallback.None, -1, 0, arr.length - 1);
+  }
 
   public static void sort(int[] arr, int depth, Fallback fallback) {
     sort(arr, 0, fallback, depth, 0, arr.length - 1);
   }
 
   private static void sort(int[] arr, int depth, Fallback fallback, int allowedDepth, int low, int high) {
-    if (depth == allowedDepth) {
+    if (depth == allowedDepth && depth >= 0) {
       switch (fallback) {
         case Heap -> {
           var hp = new Heap(2, arr, low, high + 1);

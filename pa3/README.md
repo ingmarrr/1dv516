@@ -17,34 +17,15 @@ The main submission relies on the project being installed in `mavenLocal`, so to
 ./gradlew publishToMavenLocal
 ```
 
-## Running the the File Tree
-
-For all the problems and my implementations, there are a lot of tests in the test folder that can be run with a simple `gradle test` command.
-
-For the File Tree problem, there is a main class that can be run with the following command:
-
-- Build the project with `gradle build`
-- Install it with gradle `./gradlew installDist`
-- Run the main class with `build/install/pa2/bin/pa2 <path-to-file>`
-
-To shortcut all of this, I created a simple `bash` script that can be run with `./run.sh <path-to-file>`. You might have to first run `chmod +x run.sh` to make it executable.
-
-## Run the Huffman Encoder
-
-To run the Huffman Encoder, you can run the following commands:
-
-```bash
-gradle huffman --args="<path-to-file>"
-```
-
 ## Running the tests
 
-To test any implementations, simply run `gradle test`
+There are tests for most of the problems, which can be run with `gradle test`. The tests are located in the `src/test` directory.
 
-# Spookie CTF
-# TSG CTF 2023
+## Running The Benchmarks
 
-# Tools
+To run the benchmarks for `Merge`-, `Quick`-, and `ShellSort`, as well as the `Vehicle` problem, run the following command:
 
-- Burp
-- Proxy Foxy
+- `gradle merge`
+- `gradle quick`
+- `gradle shell`
+- `gradle vehicle`

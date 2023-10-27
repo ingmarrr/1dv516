@@ -28,7 +28,7 @@ public class VehicleQuadHashMapBench {
 
   public static void run() {
     var rand = new Random();
-    var upper = 10_000;
+    var upper = 50_000;
     var qhm = new QuadHashMap<Vehicle, Integer>();
     for (int ignored : range(upper)) {
       var car = Vehicle.random(rand);
@@ -37,23 +37,36 @@ public class VehicleQuadHashMapBench {
 
     var avg = 0;
     var cnt = 0;
-    for (var entry : qhm.getBuckets()) {
-      if (entry == null) continue;
+    var buckets = qhm.getBuckets();
+    for (int ix : range(buckets.length)) {
+      var entry = buckets[ix];
+      log.print("" + ix + " - ");
+      if (entry == null) {
+        log.println("None");
+        continue;
+      }
       log.print(entry.key.toString());
       log.print(" Destination: " + entry.destIx + " Actual: " + entry.actualIx);
+      log.print(" Collisions: " + entry.collisions);
       log.println(" Offset: " + Math.abs(entry.destIx - entry.actualIx));
       avg += Math.abs(entry.destIx - entry.actualIx);
       cnt++;
     }
-    avg = avg/cnt;
+    avg = avg / cnt;
 
-    log.info("Average: ", avg);
-    log.info("Nr Buckets: ", qhm.getBuckets().length);
+    int avgCollision = Arrays.stream(buckets)
+        .map(e -> e == null ? 0 : e.collisions)
+        .reduce(0, (a, b) -> a + b);
+
+    log.info("Average Offset: ", avg);
+    log.info("Average Collisions: ", (double) avgCollision / buckets.length);
+    log.info("Nr Buckets: ", buckets.length);
+    log.info("Load Factor: ", (double) qhm.getSize() / buckets.length);
   }
 
   public static void arr() {
     var rand = new Random();
-    var upper = 10_000;
+    var upper = 100_000;
     var qhm = new ArrayList<ArrayList<Vehicle>>(upper);
     for (int ix : range(upper)) qhm.add(null);
 
