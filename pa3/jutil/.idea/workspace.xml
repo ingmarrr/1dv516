@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45e9af0b-1ab0-4ec0-b192-2b48610390d0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.2/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/8.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/8.2/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/analysis/avg.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/analysis/avg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/analysis/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/analysis/consts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/analysis/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/analysis/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/build/classes/java/main/main/QuickSortBench.class" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/build/classes/java/main/main/QuickSortBench.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/merge_bench_results/ms_itr_250000_bench.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/merge_bench_results/ms_itr_250000_bench.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/merge_bench_results/ms_itr_500000_bench.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/merge_bench_results/ms_rec_250000_bench.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/merge_bench_results/ms_rec_250000_bench.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/merge_bench_results/ms_rec_500000_bench.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.log" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/report/report.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/report/report.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/src/main/MergeSortBench.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/src/main/MergeSortBench.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/src/main/QuickSortBench.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/src/main/QuickSortBench.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/src/sorting/Merge.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/src/sorting/Merge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/src/sorting/Quick.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/src/sorting/Quick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/itr_vs_rec.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/itr_vs_rec.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/ms_itr_250000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/ms_itr_250000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/ms_rec_250000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/ms_rec_250000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_100000_bench.csv_vs_qs_insert_100000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_100000_bench.csv_vs_qs_insert_100000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_10000_bench.csv_vs_qs_insert_10000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_10000_bench.csv_vs_qs_insert_10000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_110000_bench.csv_vs_qs_insert_110000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_110000_bench.csv_vs_qs_insert_110000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_120000_bench.csv_vs_qs_insert_120000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_120000_bench.csv_vs_qs_insert_120000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_130000_bench.csv_vs_qs_insert_130000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_130000_bench.csv_vs_qs_insert_130000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_140000_bench.csv_vs_qs_insert_140000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_140000_bench.csv_vs_qs_insert_140000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_150000_bench.csv_vs_qs_insert_150000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_150000_bench.csv_vs_qs_insert_150000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_160000_bench.csv_vs_qs_insert_160000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_160000_bench.csv_vs_qs_insert_160000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_170000_bench.csv_vs_qs_insert_170000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_170000_bench.csv_vs_qs_insert_170000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_180000_bench.csv_vs_qs_insert_180000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_180000_bench.csv_vs_qs_insert_180000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_190000_bench.csv_vs_qs_insert_190000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_190000_bench.csv_vs_qs_insert_190000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_200000_bench.csv_vs_qs_insert_200000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_200000_bench.csv_vs_qs_insert_200000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_20000_bench.csv_vs_qs_insert_20000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_20000_bench.csv_vs_qs_insert_20000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_30000_bench.csv_vs_qs_insert_30000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_30000_bench.csv_vs_qs_insert_30000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_40000_bench.csv_vs_qs_insert_40000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_40000_bench.csv_vs_qs_insert_40000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_50000_bench.csv_vs_qs_insert_50000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_50000_bench.csv_vs_qs_insert_50000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_60000_bench.csv_vs_qs_insert_60000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_60000_bench.csv_vs_qs_insert_60000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_70000_bench.csv_vs_qs_insert_70000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_70000_bench.csv_vs_qs_insert_70000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_80000_bench.csv_vs_qs_insert_80000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_80000_bench.csv_vs_qs_insert_80000_bench.csv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pa3/view/qs_heap_90000_bench.csv_vs_qs_insert_90000_bench.csv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pa3/view/qs_heap_90000_bench.csv_vs_qs_insert_90000_bench.csv.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2VklCG5Z5yBqi7wJNnJdyKkNtcD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "new",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45e9af0b-1ab0-4ec0-b192-2b48610390d0" name="Changes" comment="" />
+      <created>1695387829752</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695387829752</updated>
+      <workItem from="1695387831290" duration="2466000" />
+      <workItem from="1695390366489" duration="18000" />
+      <workItem from="1695390393493" duration="687000" />
+      <workItem from="1695393452200" duration="9720000" />
+      <workItem from="1695744201644" duration="7268000" />
+      <workItem from="1695751794376" duration="3119000" />
+      <workItem from="1695807100255" duration="160000" />
+      <workItem from="1695990796571" duration="704000" />
+      <workItem from="1696159819083" duration="169000" />
+      <workItem from="1696234363380" duration="20000" />
+      <workItem from="1696234599388" duration="2000" />
+      <workItem from="1696488784169" duration="5936000" />
+      <workItem from="1696676657007" duration="634000" />
+      <workItem from="1696687210897" duration="2373000" />
+      <workItem from="1697722712669" duration="35000" />
+      <workItem from="1697722784811" duration="2000" />
+      <workItem from="1698145366145" duration="231000" />
+      <workItem from="1698150689878" duration="152000" />
+      <workItem from="1698226072664" duration="1488000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
