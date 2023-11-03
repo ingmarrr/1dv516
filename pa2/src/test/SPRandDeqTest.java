@@ -1,11 +1,9 @@
 
-import core.SPRandDeq;
+import core.Problem2.SPRandDeque;
 import logging.Logger;
 import logging.Mode;
 import testing.Test;
 import testing.Unit;
-
-import java.util.Arrays;
 
 import static range.Range.range;
 public class SPRandDeqTest {
@@ -16,10 +14,18 @@ public class SPRandDeqTest {
 
   @Unit
   public void testSPRandEnqueue() throws Test.FailException {
-    var queue = new SPRandDeq<String>();
+    var queue = new SPRandDeque<String>();
     for (int i : range(10)) {
       queue.enqueue(String.valueOf(i));
     }
+
+    // Even tho we run the iterator, we dont consume the queue
+    // This was an identified problem in my previous submission,
+    // now fixed
+    for (String i : queue) {
+//      log.debug(i);
+    }
+
     Test.throwAssertQuiet("Size == 10", queue.size() == 10);
     for (int j : range(4)) {
       queue.dequeue();
@@ -29,10 +35,6 @@ public class SPRandDeqTest {
     var res = queue.dequeue();
     Test.throwAssertQuiet("Result == " + res.get(), res.isPresent());
     Test.throwAssertQuiet("Size == 5", queue.size() == 5);
-//    log.info(Arrays.toString(queue.getElems()));
-    for (String s : queue) {
-//      log.info("i == ", s);
-    }
 
   }
 }

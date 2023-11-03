@@ -1,4 +1,4 @@
-import core.AVLTree;
+import core.Problem6.AVLTree;
 import logging.Logger;
 import logging.Mode;
 import testing.Test;

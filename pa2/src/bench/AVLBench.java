@@ -1,11 +1,10 @@
 package bench;
 
 import benching.Benchmark;
-import core.AVLTree;
+import core.Problem6.AVLTree;
 import logging.Logger;
 import logging.Mode;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;

@@ -1,13 +1,10 @@
 package main;
 
-import core.LCRSNode;
+import core.Problem3.LCRSNode;
 import logging.Logger;
 import logging.Mode;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
 import static java.util.Optional.empty;

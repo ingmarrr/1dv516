@@ -1,12 +1,11 @@
 package main;
 
-import core.HuffmanNode;
-import core.HuffmanTree;
+import core.Problem7.HuffmanNode;
+import core.Problem7.HuffmanTree;
 import logging.Logger;
 import logging.Mode;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;

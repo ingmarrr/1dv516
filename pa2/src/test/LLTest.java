@@ -1,5 +1,5 @@
 
-import core.Deque;
+import core.Problem1.Deque;
 import logging.Logger;
 import logging.Mode;
 import testing.Unit;

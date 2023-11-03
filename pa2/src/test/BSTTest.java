@@ -1,10 +1,12 @@
-import core.BSTree;
+import core.Problem4.BSTree;
 import logging.Logger;
 import logging.Mode;
 import testing.Test;
 import testing.Unit;
 
 import java.util.Arrays;
+import java.util.Iterator;
+
 import static range.Range.range;
 
 public class BSTTest {
@@ -108,7 +110,10 @@ public class BSTTest {
     bst.add(4);
     bst.add(1);
     bst.add(5);
-//    bst.add(3);
+
+    for (int i : bst.withIterType(BSTree.IterType.InOrder)) {
+//      log.info(i);
+    }
 
   }
 
@@ -123,6 +128,10 @@ public class BSTTest {
     bst.add(6);
     bst.add(5);
     bst.add(7);
+
+    for (int i : bst.withIterType(BSTree.IterType.PreOrder)) {
+//      log.info(i);
+    }
 
     Test.throwAssertQuiet("In Order Must be: [4, 2, 5, 1, 3, 5, 7]: ", Arrays.asList(new Integer[]{1, 2, 3, 4, 5, 6, 7}).equals(bst.toInOrder()));
   }
@@ -169,6 +178,8 @@ public class BSTTest {
     bst.add(1);
     bst.add(3);
 
-    var iter = bst.postOrder();
+    for (int i : bst.withIterType(BSTree.IterType.PostOrder)) {
+//      log.info(i);
+    }
   }
 }
